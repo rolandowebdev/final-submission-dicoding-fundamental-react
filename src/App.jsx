@@ -1,9 +1,11 @@
-import { Text } from '@chakra-ui/react'
+import { Globe } from 'lucide-react'
 
-export const App = () => {
-	return (
-		<Text fontSize='5xl' fontWeight='700' color='blueviolet'>
-			Snap V2
-		</Text>
-	)
+const App = () => {
+  return (
+    <h1 className="flex items-center justify-center gap-2 text-3xl font-bold text-slate-800">
+      Hello world <Globe />
+    </h1>
+  )
 }
+
+export default App
