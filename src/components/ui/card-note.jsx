@@ -12,7 +12,7 @@ export const CardNote = ({
   handleDelete,
 }) => {
   return (
-    <div className="flex min-h-[290px] select-none flex-col gap-3 rounded-md bg-softDark p-4 transition-all duration-300 hover:-translate-y-1 hover:bg-softDark/70 hover:shadow-sm hover:shadow-softDark">
+    <div className="flex min-h-[290px] select-none flex-col gap-3 rounded-md border border-border bg-softDark p-4 transition-all duration-300 hover:-translate-y-1 hover:bg-softDark/70 hover:shadow-sm hover:shadow-softDark">
       <Heading size="h2">{title}</Heading>
       <p className="leading-6 text-slate-300">{body}</p>
       <time

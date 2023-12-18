@@ -14,7 +14,7 @@ export const Navbar = () => {
   }
 
   return (
-    <header className="flex h-20 w-full max-w-3xl items-center justify-between ">
+    <header className="flex h-20 w-full max-w-3xl items-center justify-between border-b border-b-softDark">
       <div className="flex gap-2">
         <Heading className="capitalize">{`Hello, ${data?.name}`}</Heading>
         <span className="h-6 w-6 animate-wiggle text-3xl motion-reduce:animate-none">
