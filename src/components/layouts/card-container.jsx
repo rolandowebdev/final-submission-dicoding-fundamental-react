@@ -15,5 +15,5 @@ export const CardContainer = ({ children, notes }) => {
 
 CardContainer.propTypes = {
   children: PropTypes.node,
-  notes: PropTypes.array.isRequired,
+  notes: PropTypes.array,
 }

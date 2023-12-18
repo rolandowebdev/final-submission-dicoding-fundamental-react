@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import {
   Button,
   CardNote,
+  CardSkeleton,
   EmptyNotes,
   buttonVariants,
 } from '../../components/ui'
@@ -11,16 +12,19 @@ import { archiveNote, deleteNote, getActiveNotes } from '../../utils/notes'
 
 export const HomePage = () => {
   const [activeNotes, setActiveNotes] = useState([])
+  const [loading, setLoading] = useState(true)
 
   const getNotes = async () => {
     const { error, data } = await getActiveNotes()
 
     if (error) {
-      console.log(error)
+      console.error(error)
+      setLoading(false)
       return
     }
 
     setActiveNotes(data)
+    setLoading(false)
   }
 
   const handleDelete = async (id) => {
@@ -40,7 +44,7 @@ export const HomePage = () => {
   return (
     <main className="my-8 w-full max-w-3xl">
       <article>
-        <div className="mb-8 flex items-center justify-between">
+        <div className="mb-6 flex items-center justify-between">
           <div className="flex gap-2">
             <Link to="/archived" className={buttonVariants()}>
               Archived
@@ -49,7 +53,13 @@ export const HomePage = () => {
           </div>
         </div>
 
-        {activeNotes?.length > 0 ? (
+        {loading ? (
+          <CardContainer>
+            {[...Array(3)].map((_, index) => (
+              <CardSkeleton key={index} />
+            ))}
+          </CardContainer>
+        ) : activeNotes.length > 0 ? (
           <CardContainer notes={activeNotes}>
             {activeNotes.map((note) => (
               <CardNote key={note.id} {...note} handleDelete={handleDelete}>
@@ -57,7 +67,7 @@ export const HomePage = () => {
                   onClick={() => handleArchive(note.id)}
                   color="success"
                   size="icon">
-                  Unarchive
+                  Archive
                 </Button>
               </CardNote>
             ))}

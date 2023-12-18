@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import {
   Button,
   CardNote,
+  CardSkeleton,
   EmptyNotes,
   buttonVariants,
 } from '../../components/ui'
@@ -11,16 +12,19 @@ import { getArchivedNotes, deleteNote, unarchiveNote } from '../../utils/notes'
 
 export const ArchivedPage = () => {
   const [archivedNotes, setArchivedNotes] = useState([])
+  const [loading, setLoading] = useState(true)
 
   const getNotes = async () => {
     const { error, data } = await getArchivedNotes()
 
     if (error) {
       console.log(error)
+      setLoading(false)
       return
     }
 
     setArchivedNotes(data)
+    setLoading(false)
   }
 
   const handleDelete = async (id) => {
@@ -40,7 +44,7 @@ export const ArchivedPage = () => {
   return (
     <main className="my-8 w-full max-w-3xl">
       <article>
-        <div className="mb-8 flex items-center justify-between">
+        <div className="mb-6 flex items-center justify-between">
           <div className="flex gap-2">
             <Link to="/dashboard" className={buttonVariants()}>
               Back to Dashboard
@@ -49,7 +53,13 @@ export const ArchivedPage = () => {
           </div>
         </div>
 
-        {archivedNotes?.length > 0 ? (
+        {loading ? (
+          <CardContainer>
+            {[...Array(3)].map((_, index) => (
+              <CardSkeleton key={index} />
+            ))}
+          </CardContainer>
+        ) : archivedNotes?.length > 0 ? (
           <CardContainer notes={archivedNotes}>
             {archivedNotes.map((note) => (
               <CardNote key={note.id} {...note} handleDelete={handleDelete}>
