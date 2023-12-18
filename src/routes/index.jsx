@@ -1,6 +1,7 @@
 import { Navigate, createBrowserRouter, redirect } from 'react-router-dom'
 import { HomePage } from '../pages/home'
 import { LoginPage } from '../pages/login'
+import { RegisterPage } from '../pages/register'
 
 export const routes = createBrowserRouter([
   {
@@ -20,8 +21,13 @@ export const routes = createBrowserRouter([
           return null
         },
       },
+      {
+        path: 'register',
+        element: <RegisterPage />,
+      },
     ],
   },
+
   {
     path: 'dashboard',
     element: <HomePage />,
