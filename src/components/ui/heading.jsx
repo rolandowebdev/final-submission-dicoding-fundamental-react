@@ -27,6 +27,6 @@ export const Heading = ({ size, children, className, ...rest }) => {
 
 Heading.propTypes = {
   size: PropTypes.oneOf(['h1', 'h2', 'h3']),
-  children: PropTypes.node.isRequired,
+  children: PropTypes.string,
   className: PropTypes.string,
 }

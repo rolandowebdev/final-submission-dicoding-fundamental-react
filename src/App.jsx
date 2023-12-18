@@ -1,7 +1,8 @@
-import { Login } from './pages/login'
+import { RouterProvider } from 'react-router-dom'
+import { routes } from './routes'
 
 const App = () => {
-  return <Login />
+  return <RouterProvider router={routes} />
 }
 
 export default App
