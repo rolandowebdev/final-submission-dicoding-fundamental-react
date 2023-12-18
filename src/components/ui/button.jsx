@@ -2,11 +2,11 @@ import clsx from 'clsx'
 import PropTypes from 'prop-types'
 import { tv } from 'tailwind-variants'
 
-const styles = tv({
+export const buttonVariants = tv({
   base: 'rounded-md px-4 py-2 font-medium text-light transition-opacity hover:opacity-80 disabled:cursor-not-allowed disabled:opacity-60',
   variants: {
     color: {
-      default: 'bg-slate-800',
+      default: 'bg-softDark',
       success: 'bg-success',
       danger: 'bg-rose-600',
     },
@@ -21,7 +21,9 @@ const styles = tv({
 
 export const Button = ({ color, size, children, className, ...rest }) => {
   return (
-    <button {...rest} className={clsx(styles({ color, size }), className)}>
+    <button
+      {...rest}
+      className={clsx(buttonVariants({ color, size }), className)}>
       {children}
     </button>
   )

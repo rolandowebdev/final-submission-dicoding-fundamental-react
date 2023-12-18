@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { RootContainer } from '../../components/layouts'
 import { Button, Heading, Input } from '../../components/ui'
 import { useInput } from '../../hooks/useInput'
-import { register } from '../../libs/auth'
+import { register } from '../../utils/auth'
 
 export const RegisterPage = () => {
   const [username, resetUsername, onUsernameChange] = useInput('')

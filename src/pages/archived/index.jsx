@@ -7,20 +7,20 @@ import {
   buttonVariants,
 } from '../../components/ui'
 import { CardContainer } from '../../components/layouts'
-import { archiveNote, deleteNote, getActiveNotes } from '../../utils/notes'
+import { getArchivedNotes, deleteNote, unarchiveNote } from '../../utils/notes'
 
-export const HomePage = () => {
-  const [activeNotes, setActiveNotes] = useState([])
+export const ArchivedPage = () => {
+  const [archivedNotes, setArchivedNotes] = useState([])
 
   const getNotes = async () => {
-    const { error, data } = await getActiveNotes()
+    const { error, data } = await getArchivedNotes()
 
     if (error) {
       console.log(error)
       return
     }
 
-    setActiveNotes(data)
+    setArchivedNotes(data)
   }
 
   const handleDelete = async (id) => {
@@ -28,8 +28,8 @@ export const HomePage = () => {
     getNotes()
   }
 
-  const handleArchive = async (id) => {
-    await archiveNote(id)
+  const handleUnarchive = async (id) => {
+    await unarchiveNote(id)
     getNotes()
   }
 
@@ -42,19 +42,19 @@ export const HomePage = () => {
       <article>
         <div className="mb-8 flex items-center justify-between">
           <div className="flex gap-2">
-            <Link to="/archived" className={buttonVariants()}>
-              Archived
+            <Link to="/dashboard" className={buttonVariants()}>
+              Back to Dashboard
             </Link>
             <Button>Create Note</Button>
           </div>
         </div>
 
-        {activeNotes?.length > 0 ? (
-          <CardContainer notes={activeNotes}>
-            {activeNotes.map((note) => (
+        {archivedNotes?.length > 0 ? (
+          <CardContainer notes={archivedNotes}>
+            {archivedNotes.map((note) => (
               <CardNote key={note.id} {...note} handleDelete={handleDelete}>
                 <Button
-                  onClick={() => handleArchive(note.id)}
+                  onClick={() => handleUnarchive(note.id)}
                   color="success"
                   size="icon">
                   Unarchive
@@ -63,7 +63,7 @@ export const HomePage = () => {
             ))}
           </CardContainer>
         ) : (
-          <EmptyNotes text="List of active notes is empty" />
+          <EmptyNotes text="List of archived notes is empty" />
         )}
       </article>
     </main>

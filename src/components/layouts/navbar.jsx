@@ -1,10 +1,11 @@
-import { PenLine, Moon, PlusCircle, Languages } from 'lucide-react'
-import { Link } from 'react-router-dom'
-import { Button } from '../ui'
-import { removeAccessToken } from '../../libs/auth'
+import { Languages, Moon } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
+import { removeAccessToken } from '../../utils/auth'
+import { Button, Heading } from '../ui'
+import { useRouteLoaderData } from 'react-router-dom'
 
 export const Navbar = () => {
+  const { data } = useRouteLoaderData('user')
   const navigate = useNavigate()
 
   const handleLogout = () => {
@@ -13,18 +14,15 @@ export const Navbar = () => {
   }
 
   return (
-    <header className="flex h-20 w-full max-w-3xl items-center justify-between">
-      <Link to="/dashboard" className="flex items-center gap-2">
-        <PenLine size={26} />
-        <span className="text-2xl font-semibold">Snap</span>
-      </Link>
+    <header className="flex h-20 w-full max-w-3xl items-center justify-between ">
+      <div className="flex gap-2">
+        <Heading className="capitalize">{`Hello, ${data?.name}`}</Heading>
+        <span className="h-6 w-6 animate-wiggle text-3xl motion-reduce:animate-none">
+          👋️
+        </span>
+      </div>
       <nav>
         <ul className="flex items-center gap-4">
-          <li>
-            <Button size="icon">
-              <PlusCircle />
-            </Button>
-          </li>
           <li>
             <Button size="icon">
               <Languages />
