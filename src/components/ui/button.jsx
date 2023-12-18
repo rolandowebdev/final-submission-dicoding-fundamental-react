@@ -3,21 +3,25 @@ import PropTypes from 'prop-types'
 import { tv } from 'tailwind-variants'
 
 const styles = tv({
-  base: 'rounded-md px-4 py-1 font-medium transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60',
+  base: 'rounded-md px-4 py-2 font-medium text-light transition-opacity hover:opacity-80 disabled:cursor-not-allowed disabled:opacity-60',
   variants: {
     color: {
-      success: 'text-light bg-success',
-      danger: 'text-light bg-rose-600',
+      default: 'bg-slate-800',
+      success: 'bg-success',
+      danger: 'bg-rose-600',
+    },
+    size: {
+      icon: 'px-[10px]',
     },
   },
   defaultVariants: {
-    color: 'success',
+    color: 'default',
   },
 })
 
-export const Button = ({ color, children, className, ...rest }) => {
+export const Button = ({ color, size, children, className, ...rest }) => {
   return (
-    <button {...rest} className={clsx(styles({ color }), className)}>
+    <button {...rest} className={clsx(styles({ color, size }), className)}>
       {children}
     </button>
   )
@@ -25,6 +29,7 @@ export const Button = ({ color, children, className, ...rest }) => {
 
 Button.propTypes = {
   color: PropTypes.oneOf(['success', 'danger']),
+  size: PropTypes.oneOf(['icon']),
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
 }

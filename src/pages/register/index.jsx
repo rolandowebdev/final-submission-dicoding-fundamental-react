@@ -31,7 +31,7 @@ export const RegisterPage = () => {
 
   return (
     <RootContainer className="items-center justify-center">
-      <div className="w-full max-w-xs">
+      <main className="w-full max-w-xs">
         <Heading className="mb-5 text-center">Register to Snap</Heading>
         <form
           onSubmit={handleLogin}
@@ -64,7 +64,9 @@ export const RegisterPage = () => {
             value={confirmPassword}
             onChange={onConfirmPasswordChange}
           />
-          <Button type="submit">Register</Button>
+          <Button color="success" type="submit">
+            Register
+          </Button>
         </form>
         <div className="mt-4 rounded-md border border-border p-4 text-center text-sm">
           <p>
@@ -76,7 +78,7 @@ export const RegisterPage = () => {
             </Link>
           </p>
         </div>
-      </div>
+      </main>
     </RootContainer>
   )
 }

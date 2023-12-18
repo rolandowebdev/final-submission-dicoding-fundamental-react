@@ -27,7 +27,7 @@ export const LoginPage = () => {
 
   return (
     <RootContainer className="items-center justify-center">
-      <div className="w-full max-w-xs">
+      <main className="w-full max-w-xs">
         <Heading className="mb-5 text-center">Login to Snap</Heading>
         <form
           onSubmit={handleLogin}
@@ -46,7 +46,9 @@ export const LoginPage = () => {
             value={password}
             onChange={onPasswordChange}
           />
-          <Button type="submit">Login</Button>
+          <Button color="success" type="submit">
+            Login
+          </Button>
         </form>
         <div className="mt-4 rounded-md border border-border p-4 text-center text-sm">
           <p>
@@ -58,7 +60,7 @@ export const LoginPage = () => {
             </Link>
           </p>
         </div>
-      </div>
+      </main>
     </RootContainer>
   )
 }
