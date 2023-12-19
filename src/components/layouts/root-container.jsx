@@ -1,11 +1,7 @@
 import clsx from 'clsx'
 import PropTypes from 'prop-types'
-import { Outlet } from 'react-router-dom'
-import { Navbar } from './navbar'
-import { getAccessToken } from '../../utils/auth'
 
-export const RootContainer = ({ className, ...rest }) => {
-  const isUserExist = getAccessToken()
+export const RootContainer = ({ children, className, ...rest }) => {
   return (
     <div
       {...rest}
@@ -13,12 +9,12 @@ export const RootContainer = ({ className, ...rest }) => {
         'flex min-h-screen flex-col bg-dark px-2 text-light sm:px-4',
         className,
       )}>
-      {isUserExist && <Navbar />}
-      <Outlet />
+      {children}
     </div>
   )
 }
 
 RootContainer.propTypes = {
+  children: PropTypes.node,
   className: PropTypes.string,
 }

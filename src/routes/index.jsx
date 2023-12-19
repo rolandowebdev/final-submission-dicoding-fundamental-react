@@ -1,16 +1,27 @@
 import { Navigate, createBrowserRouter, redirect } from 'react-router-dom'
+import { ArchivedPage } from '../pages/archived'
 import { HomePage } from '../pages/home'
 import { LoginPage } from '../pages/login'
 import { RegisterPage } from '../pages/register'
 import { getUserLogged } from '../utils/auth'
-import { RootContainer } from '../components/layouts'
-import { Outlet } from 'react-router-dom'
-import { ArchivedPage } from '../pages/archived'
+
+const protectedRoutes = () => {
+  if (!localStorage.getItem('accessToken')) {
+    return redirect('/login')
+  }
+  return null
+}
+
+const loginLoader = () => {
+  if (localStorage.getItem('accessToken')) {
+    return redirect('/dashboard')
+  }
+  return null
+}
 
 export const routes = createBrowserRouter([
   {
     path: '/',
-    element: <RootContainer className="items-center justify-center" />,
     children: [
       {
         index: true,
@@ -19,12 +30,7 @@ export const routes = createBrowserRouter([
       {
         path: 'login',
         element: <LoginPage />,
-        loader: () => {
-          if (localStorage.getItem('accessToken')) {
-            return redirect('/dashboard')
-          }
-          return null
-        },
+        loader: () => loginLoader(),
       },
       {
         path: 'register',
@@ -35,28 +41,17 @@ export const routes = createBrowserRouter([
   {
     id: 'user',
     path: '/',
-    element: <RootContainer className="items-center" />,
     loader: () => getUserLogged(),
     children: [
       {
         path: 'dashboard',
         element: <HomePage />,
-        loader: () => {
-          if (!localStorage.getItem('accessToken')) {
-            return redirect('/login')
-          }
-          return null
-        },
+        loader: () => protectedRoutes(),
       },
       {
         path: 'archived',
         element: <ArchivedPage />,
-        loader: () => {
-          if (!localStorage.getItem('accessToken')) {
-            return redirect('/login')
-          }
-          return null
-        },
+        loader: () => protectedRoutes(),
       },
     ],
   },

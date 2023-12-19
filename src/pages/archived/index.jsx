@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
+import { Toaster, toast } from 'react-hot-toast'
 import { Link } from 'react-router-dom'
+import { CardContainer, Navbar, RootContainer } from '../../components/layouts'
 import {
   Button,
   CardNote,
@@ -7,9 +9,7 @@ import {
   EmptyNotes,
   buttonVariants,
 } from '../../components/ui'
-import { CardContainer } from '../../components/layouts'
-import { getArchivedNotes, deleteNote, unarchiveNote } from '../../utils/notes'
-import { toast, Toaster } from 'react-hot-toast'
+import { deleteNote, getArchivedNotes, unarchiveNote } from '../../utils/notes'
 
 export const ArchivedPage = () => {
   const [archivedNotes, setArchivedNotes] = useState([])
@@ -46,41 +46,44 @@ export const ArchivedPage = () => {
   return (
     <>
       <Toaster />
-      <main className="my-8 w-full max-w-3xl">
-        <article>
-          <div className="mb-6 flex items-center justify-between">
-            <div className="flex gap-2">
-              <Link to="/dashboard" className={buttonVariants()}>
-                Back to Dashboard
-              </Link>
-              <Button>Create Note</Button>
+      <RootContainer className="items-center">
+        <Navbar />
+        <main className="my-8 w-full max-w-3xl">
+          <article>
+            <div className="mb-6 flex items-center justify-between">
+              <div className="flex gap-2">
+                <Link to="/dashboard" className={buttonVariants()}>
+                  Back to Dashboard
+                </Link>
+                <Button>Create Note</Button>
+              </div>
             </div>
-          </div>
 
-          {loading ? (
-            <CardContainer>
-              {[...Array(3)].map((_, index) => (
-                <CardSkeleton key={index} />
-              ))}
-            </CardContainer>
-          ) : archivedNotes?.length > 0 ? (
-            <CardContainer notes={archivedNotes}>
-              {archivedNotes.map((note) => (
-                <CardNote key={note.id} {...note} handleDelete={handleDelete}>
-                  <Button
-                    onClick={() => handleUnarchive(note.id)}
-                    color="success"
-                    size="icon">
-                    Unarchive
-                  </Button>
-                </CardNote>
-              ))}
-            </CardContainer>
-          ) : (
-            <EmptyNotes text="List of archived notes is empty" />
-          )}
-        </article>
-      </main>
+            {loading ? (
+              <CardContainer>
+                {[...Array(3)].map((_, index) => (
+                  <CardSkeleton key={index} />
+                ))}
+              </CardContainer>
+            ) : archivedNotes?.length > 0 ? (
+              <CardContainer notes={archivedNotes}>
+                {archivedNotes.map((note) => (
+                  <CardNote key={note.id} {...note} handleDelete={handleDelete}>
+                    <Button
+                      onClick={() => handleUnarchive(note.id)}
+                      color="success"
+                      size="icon">
+                      Unarchive
+                    </Button>
+                  </CardNote>
+                ))}
+              </CardContainer>
+            ) : (
+              <EmptyNotes text="List of archived notes is empty" />
+            )}
+          </article>
+        </main>
+      </RootContainer>
     </>
   )
 }
