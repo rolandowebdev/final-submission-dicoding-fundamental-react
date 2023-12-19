@@ -10,6 +10,8 @@ import {
   buttonVariants,
 } from '../../components/ui'
 import { deleteNote, getArchivedNotes, unarchiveNote } from '../../utils/notes'
+import { ChevronLeft } from 'lucide-react'
+import clsx from 'clsx'
 
 export const ArchivedPage = () => {
   const [archivedNotes, setArchivedNotes] = useState([])
@@ -51,12 +53,11 @@ export const ArchivedPage = () => {
         <main className="my-8 w-full max-w-3xl">
           <article>
             <div className="mb-6 flex items-center justify-between">
-              <div className="flex gap-2">
-                <Link to="/dashboard" className={buttonVariants()}>
-                  Back to Dashboard
-                </Link>
-                <Button>Create Note</Button>
-              </div>
+              <Link
+                to="/dashboard"
+                className={clsx(buttonVariants(), 'flex w-max items-center')}>
+                <ChevronLeft size={22} /> Back to Dashboard
+              </Link>
             </div>
 
             {loading ? (

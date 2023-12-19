@@ -1,5 +1,6 @@
-import { showFormattedDate } from '../../utils/formattedDate'
+import parse from 'html-react-parser'
 import PropTypes from 'prop-types'
+import { showFormattedDate } from '../../utils/formattedDate'
 import { Button } from './button'
 import { Heading } from './heading'
 
@@ -14,7 +15,7 @@ export const CardNote = ({
   return (
     <div className="flex min-h-[290px] select-none flex-col gap-3 rounded-md border border-border bg-softDark p-4 transition-all duration-300 hover:-translate-y-1 hover:bg-softDark/70 hover:shadow-sm hover:shadow-softDark">
       <Heading size="h2">{title}</Heading>
-      <p className="leading-6 text-slate-300">{body}</p>
+      <p className="leading-6 text-slate-300">{parse(body)}</p>
       <time
         className="w-max rounded-sm bg-dark px-2 py-1 text-xs"
         dateTime={createdAt}>

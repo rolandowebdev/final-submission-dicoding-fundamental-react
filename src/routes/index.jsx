@@ -1,5 +1,6 @@
 import { Navigate, createBrowserRouter, redirect } from 'react-router-dom'
 import { ArchivedPage } from '../pages/archived'
+import { CreatePage } from '../pages/create'
 import { HomePage } from '../pages/home'
 import { LoginPage } from '../pages/login'
 import { RegisterPage } from '../pages/register'
@@ -51,6 +52,11 @@ export const routes = createBrowserRouter([
       {
         path: 'archived',
         element: <ArchivedPage />,
+        loader: () => protectedRoutes(),
+      },
+      {
+        path: 'create',
+        element: <CreatePage />,
         loader: () => protectedRoutes(),
       },
     ],

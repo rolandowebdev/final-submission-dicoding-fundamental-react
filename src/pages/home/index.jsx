@@ -55,7 +55,9 @@ export const HomePage = () => {
                 <Link to="/archived" className={buttonVariants()}>
                   Archived
                 </Link>
-                <Button>Create Note</Button>
+                <Link to="/create" className={buttonVariants()}>
+                  Create Note
+                </Link>
               </div>
             </div>
 
