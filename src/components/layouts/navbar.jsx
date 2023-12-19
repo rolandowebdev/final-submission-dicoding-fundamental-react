@@ -1,8 +1,7 @@
 import { Languages, Moon } from 'lucide-react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useRouteLoaderData } from 'react-router-dom'
 import { removeAccessToken } from '../../utils/auth'
 import { Button, Heading } from '../ui'
-import { useRouteLoaderData } from 'react-router-dom'
 import { Modal } from './modal'
 
 export const Navbar = () => {

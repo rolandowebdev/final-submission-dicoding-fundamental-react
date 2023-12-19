@@ -5,6 +5,8 @@ import { HomePage } from '../pages/home'
 import { LoginPage } from '../pages/login'
 import { RegisterPage } from '../pages/register'
 import { getUserLogged } from '../utils/auth'
+import { Outlet } from 'react-router-dom'
+import { DetailPage } from '../pages/detail'
 
 const protectedRoutes = () => {
   if (!localStorage.getItem('accessToken')) {
@@ -58,6 +60,16 @@ export const routes = createBrowserRouter([
         path: 'create',
         element: <CreatePage />,
         loader: () => protectedRoutes(),
+      },
+      {
+        path: 'notes',
+        children: [
+          {
+            path: ':noteId',
+            element: <DetailPage />,
+            loader: () => protectedRoutes(),
+          },
+        ],
       },
     ],
   },

@@ -1,6 +1,6 @@
 export * from './button'
 export * from './card-note'
-export * from './card-skeleton'
+export * from './skeleton'
 export * from './empty-notes'
 export * from './heading'
 export * from './input'
