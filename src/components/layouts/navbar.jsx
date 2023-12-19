@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { removeAccessToken } from '../../utils/auth'
 import { Button, Heading } from '../ui'
 import { useRouteLoaderData } from 'react-router-dom'
+import { Modal } from './modal'
 
 export const Navbar = () => {
   const { data } = useRouteLoaderData('user')
@@ -34,9 +35,11 @@ export const Navbar = () => {
             </Button>
           </li>
           <li>
-            <Button onClick={handleLogout} color="danger">
-              Logout
-            </Button>
+            <Modal
+              text="Logout"
+              description={`Are you sure you want to logout ${data?.name}?`}
+              handleAction={handleLogout}
+            />
           </li>
         </ul>
       </nav>
