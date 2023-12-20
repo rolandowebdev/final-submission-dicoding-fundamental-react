@@ -4,39 +4,42 @@ import { Button, Heading, Input } from '../../components/ui'
 import { useInput } from '../../hooks/useInput'
 import { register } from '../../utils/auth'
 import { showErrorToaster, showSuccessToaster } from '../../utils/toast'
+import { useNavigate } from 'react-router-dom'
 
 export const RegisterPage = () => {
+  const navigate = useNavigate()
   const [name, resetName, onNameChange] = useInput('')
   const [email, resetEmail, onEmailChange] = useInput('')
   const [password, resetPassword, onPasswordChange] = useInput('')
   const [confirmPassword, resetConfirmPassword, onConfirmPasswordChange] =
     useInput('')
 
-  const handleLogin = async (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault()
 
-    const { error, data } = await register({ name: name, email, password })
+    let passwordsMatch = true
 
-    if (!confirmPassword) {
-      showErrorToaster({ message: 'Please confirm your password' })
+    if (password !== confirmPassword) {
+      passwordsMatch = false
+      showErrorToaster({ message: 'Passwords do not match' })
       return
     }
 
-    if (confirmPassword !== password) {
-      showErrorToaster({ message: 'Password do not match' })
-      return
-    }
+    if (passwordsMatch) {
+      const { error, data } = await register({ name: name, email, password })
 
-    if (error) {
-      showErrorToaster({ message: data })
-      return
-    }
+      if (error) {
+        showErrorToaster({ message: data })
+        return
+      }
 
-    resetName()
-    resetEmail()
-    resetPassword()
-    resetConfirmPassword()
-    showSuccessToaster({ message: 'User created successfully' })
+      resetName()
+      resetEmail()
+      resetPassword()
+      resetConfirmPassword()
+      showSuccessToaster({ message: 'User created successfully' })
+      navigate('/login')
+    }
   }
 
   return (
@@ -44,7 +47,7 @@ export const RegisterPage = () => {
       <main className="w-full max-w-xs">
         <Heading className="mb-5 text-center">Register to Snap</Heading>
         <form
-          onSubmit={handleLogin}
+          onSubmit={handleRegister}
           className="flex flex-col gap-4 rounded-md border border-border bg-softDark p-5">
           <Input
             id="name"
