@@ -2,12 +2,12 @@ import clsx from 'clsx'
 import parse from 'html-react-parser'
 import { ChevronLeft } from 'lucide-react'
 import { useEffect, useState } from 'react'
-import toast from 'react-hot-toast'
 import { Link, useParams } from 'react-router-dom'
 import { Navbar, RootContainer } from '../../components/layouts'
 import { Heading, DetailSkeleton, buttonVariants } from '../../components/ui'
 import { showFormattedDate } from '../../utils/formattedDate'
 import { getNote } from '../../utils/notes'
+import { showErrorToaster, showSuccessToaster } from '../../utils/toast'
 
 export const DetailPage = () => {
   const { noteId } = useParams()
@@ -18,7 +18,7 @@ export const DetailPage = () => {
     const { error, data } = await getNote(noteId)
 
     if (error) {
-      toast.error(data)
+      showErrorToaster({ message: data })
       setLoading(false)
       return
     }

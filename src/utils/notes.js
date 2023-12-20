@@ -12,7 +12,7 @@ async function addNote({ title, body }) {
   const responseJson = await response.json()
 
   if (responseJson.status !== 'success') {
-    return { error: true, data: responseJson }
+    return { error: true, data: responseJson.message }
   }
 
   return { error: false, data: responseJson.data }
@@ -23,7 +23,7 @@ async function getActiveNotes() {
   const responseJson = await response.json()
 
   if (responseJson.status !== 'success') {
-    return { error: true, data: responseJson }
+    return { error: true, data: responseJson.message }
   }
 
   return { error: false, data: responseJson.data }
@@ -34,7 +34,7 @@ async function getArchivedNotes() {
   const responseJson = await response.json()
 
   if (responseJson.status !== 'success') {
-    return { error: true, data: responseJson }
+    return { error: true, data: responseJson.message }
   }
 
   return { error: false, data: responseJson.data }
@@ -45,7 +45,7 @@ async function getNote(id) {
   const responseJson = await response.json()
 
   if (responseJson.status !== 'success') {
-    return { error: true, data: responseJson }
+    return { error: true, data: responseJson.message }
   }
 
   return { error: false, data: responseJson.data }
@@ -59,7 +59,7 @@ async function archiveNote(id) {
   const responseJson = await response.json()
 
   if (responseJson.status !== 'success') {
-    return { error: true, data: null }
+    return { error: true, data: responseJson.message }
   }
 
   return { error: false, data: responseJson.data }
@@ -73,7 +73,7 @@ async function unarchiveNote(id) {
   const responseJson = await response.json()
 
   if (responseJson.status !== 'success') {
-    return { error: true, data: null }
+    return { error: true, data: responseJson.message }
   }
 
   return { error: false, data: responseJson.data }
@@ -87,7 +87,7 @@ async function deleteNote(id) {
   const responseJson = await response.json()
 
   if (responseJson.status !== 'success') {
-    return { error: true, data: null }
+    return { error: true, data: responseJson.message }
   }
 
   return { error: false, data: responseJson.data }
