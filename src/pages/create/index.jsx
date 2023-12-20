@@ -1,3 +1,7 @@
+import clsx from 'clsx'
+import { ChevronLeft, Loader2 } from 'lucide-react'
+import { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { Navbar, RootContainer } from '../../components/layouts'
 import {
   Button,
@@ -8,31 +12,32 @@ import {
 } from '../../components/ui'
 import { useInput } from '../../hooks/useInput'
 import { addNote } from '../../utils/notes'
-import { useNavigate } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-import { ChevronLeft } from 'lucide-react'
-import clsx from 'clsx'
 import { showErrorToaster, showSuccessToaster } from '../../utils/toast'
 
 export const CreatePage = () => {
   const navigate = useNavigate()
+  const [loading, setLoading] = useState(false)
+
   const [title, resetTitle, onTitleChange] = useInput('')
   const [body, resetBody, onBodyChange] = useInput('')
 
   const handleCreateNote = async (e) => {
     e.preventDefault()
 
+    setLoading(true)
+
     const { error, data } = await addNote({ title, body })
 
     if (error) {
       showErrorToaster({ message: data })
+      setLoading(false)
       return
     }
 
     resetTitle()
     resetBody()
-
     showSuccessToaster({ message: 'Note created successfully' })
+    setLoading(false)
     navigate('/dashboard')
   }
 
@@ -69,8 +74,11 @@ export const CreatePage = () => {
             value={body}
             onChange={onBodyChange}
           />
-          <Button color="success" type="submit">
-            Create
+          <Button
+            color="success"
+            type="submit"
+            className="flex h-10 w-full items-center justify-center">
+            {loading ? <Loader2 className="h-5 w-5 animate-spin" /> : 'Create'}
           </Button>
         </form>
       </main>

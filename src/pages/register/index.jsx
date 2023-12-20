@@ -1,13 +1,16 @@
-import { Link } from 'react-router-dom'
+import { Loader2 } from 'lucide-react'
+import { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { RootContainer } from '../../components/layouts'
 import { Button, Heading, Input } from '../../components/ui'
 import { useInput } from '../../hooks/useInput'
 import { register } from '../../utils/auth'
 import { showErrorToaster, showSuccessToaster } from '../../utils/toast'
-import { useNavigate } from 'react-router-dom'
 
 export const RegisterPage = () => {
   const navigate = useNavigate()
+  const [loading, setLoading] = useState(false)
+
   const [name, resetName, onNameChange] = useInput('')
   const [email, resetEmail, onEmailChange] = useInput('')
   const [password, resetPassword, onPasswordChange] = useInput('')
@@ -17,11 +20,14 @@ export const RegisterPage = () => {
   const handleRegister = async (e) => {
     e.preventDefault()
 
+    setLoading(true)
+
     let passwordsMatch = true
 
     if (password !== confirmPassword) {
       passwordsMatch = false
       showErrorToaster({ message: 'Passwords do not match' })
+      setLoading(false)
       return
     }
 
@@ -30,6 +36,7 @@ export const RegisterPage = () => {
 
       if (error) {
         showErrorToaster({ message: data })
+        setLoading(false)
         return
       }
 
@@ -38,6 +45,7 @@ export const RegisterPage = () => {
       resetPassword()
       resetConfirmPassword()
       showSuccessToaster({ message: 'User created successfully' })
+      setLoading(false)
       navigate('/login')
     }
   }
@@ -77,8 +85,15 @@ export const RegisterPage = () => {
             value={confirmPassword}
             onChange={onConfirmPasswordChange}
           />
-          <Button color="success" type="submit">
-            Register
+          <Button
+            color="success"
+            type="submit"
+            className="flex h-10 w-full items-center justify-center">
+            {loading ? (
+              <Loader2 className="h-5 w-5 animate-spin" />
+            ) : (
+              'Register'
+            )}
           </Button>
         </form>
         <div className="mt-4 rounded-md border border-border p-4 text-center text-sm">
