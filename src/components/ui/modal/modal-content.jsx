@@ -7,7 +7,7 @@ export const ModalContent = ({ className, children }) => {
     <article
       className={clsx(
         'z-20 rounded-md shadow-md',
-        'bg-light dark:bg-dark',
+        'bg-slate-100 dark:bg-dark',
         'fixed left-1/2 top-1/2 w-full -translate-x-1/2 -translate-y-1/2 p-4',
         className,
       )}>

@@ -12,7 +12,7 @@ export const Input = ({ className, id, label, ...rest }) => (
       {...rest}
       id={id}
       className={clsx(
-        'rounded-md bg-dark px-3 py-1 duration-200 hover:ring-1 hover:ring-light focus:outline-none focus:ring-2 focus:ring-blue-600 focus-visible:ring-2',
+        'rounded-md bg-slate-100 px-3 py-1 duration-300 hover:ring-1 hover:ring-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus-visible:ring-2 dark:bg-dark',
         className,
       )}
     />

@@ -4,10 +4,13 @@ import { ROUTES } from '../../constants/path-name'
 import { removeAccessToken } from '../../utils/auth'
 import { Button, Heading } from '../ui'
 import { Modal } from './modal'
+import { useTheme } from '../../hooks/useTheme'
+import { Sun } from 'lucide-react'
 
 export const Navbar = () => {
-  const { data } = useRouteLoaderData('user')
   const navigate = useNavigate()
+  const { data } = useRouteLoaderData('user')
+  const { theme, setTheme } = useTheme()
 
   const handleLogout = () => {
     removeAccessToken()
@@ -15,7 +18,7 @@ export const Navbar = () => {
   }
 
   return (
-    <header className="flex h-20 w-full max-w-3xl items-center justify-between border-b border-b-softDark">
+    <header className="flex h-20 w-full max-w-3xl items-center justify-between border-b border-b-gray-300 dark:border-b-softDark">
       <div className="flex gap-2">
         <Heading className="capitalize">{`Hello, ${data?.name}`}</Heading>
         <span className="h-6 w-6 animate-wiggle text-3xl motion-reduce:animate-none">
@@ -30,8 +33,10 @@ export const Navbar = () => {
             </Button>
           </li>
           <li>
-            <Button size="icon">
-              <Moon />
+            <Button
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              size="icon">
+              {theme === 'dark' ? <Moon /> : <Sun />}
             </Button>
           </li>
           <li>

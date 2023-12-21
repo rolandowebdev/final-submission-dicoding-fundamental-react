@@ -15,13 +15,15 @@ export const CardNote = ({
   handleDelete,
 }) => {
   return (
-    <div className="flex min-h-[290px] select-none flex-col gap-3 rounded-md border border-border bg-softDark p-4 transition-all duration-300 hover:bg-softDark/70 hover:shadow-sm hover:shadow-softDark">
+    <div className="flex min-h-[290px] select-none flex-col gap-3 rounded-md border border-slate-400 bg-slate-300 p-4 duration-300 hover:-translate-y-1 hover:shadow-sm dark:border-border dark:bg-softDark dark:hover:bg-softDark/70 dark:hover:shadow-softDark">
       <Link to={`/${ROUTES.NOTES}/${id}`} className="hover:underline">
         <Heading size="h2">{title}</Heading>
       </Link>
-      <p className="leading-6 text-slate-300">{parse(body)}</p>
+      <p className="leading-6 text-softDark dark:text-slate-300">
+        {parse(body)}
+      </p>
       <time
-        className="w-max rounded-sm bg-dark px-2 py-1 text-xs"
+        className="w-max rounded-sm border border-slate-400 bg-light px-2 py-1 text-xs dark:border-border dark:bg-dark"
         dateTime={createdAt}>
         {showFormattedDate(createdAt)}
       </time>

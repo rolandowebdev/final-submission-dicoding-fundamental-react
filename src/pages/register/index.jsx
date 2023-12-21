@@ -57,13 +57,14 @@ export const RegisterPage = () => {
         <Heading className="mb-5 text-center">Register to Snap</Heading>
         <form
           onSubmit={handleRegister}
-          className="flex flex-col gap-4 rounded-md border border-border bg-softDark p-5">
+          className="flex flex-col gap-4 rounded-md border border-slate-400 bg-slate-300 p-5 dark:border-border dark:bg-softDark">
           <Input
             id="name"
             label="Name"
             type="text"
             value={name}
             onChange={onNameChange}
+            placeholder="e.g. Anya Forger"
           />
           <Input
             id="email"
@@ -71,6 +72,7 @@ export const RegisterPage = () => {
             type="email"
             value={email}
             onChange={onEmailChange}
+            placeholder="e.g. anya@gmail.com"
           />
           <Input
             id="password"
@@ -78,6 +80,7 @@ export const RegisterPage = () => {
             type="password"
             value={password}
             onChange={onPasswordChange}
+            placeholder="min. 6 characters"
           />
           <Input
             id="confirmPassword"
@@ -85,6 +88,7 @@ export const RegisterPage = () => {
             type="password"
             value={confirmPassword}
             onChange={onConfirmPasswordChange}
+            placeholder="min. 6 characters"
           />
           <Button
             color="success"
@@ -97,7 +101,7 @@ export const RegisterPage = () => {
             )}
           </Button>
         </form>
-        <div className="mt-4 rounded-md border border-border p-4 text-center text-sm">
+        <div className="mt-4 rounded-md border border-slate-400 p-4 text-center text-sm dark:border-border">
           <p>
             Already have an account?{' '}
             <Link

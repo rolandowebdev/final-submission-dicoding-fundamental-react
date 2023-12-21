@@ -3,12 +3,13 @@ import PropTypes from 'prop-types'
 import { tv } from 'tailwind-variants'
 
 export const buttonVariants = tv({
-  base: 'rounded-md px-4 py-2 font-medium text-light transition-opacity hover:opacity-80 disabled:cursor-not-allowed disabled:opacity-60',
+  base: 'rounded-md border px-4 py-2 font-medium transition-opacity hover:opacity-80 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:opacity-60',
   variants: {
     color: {
-      default: 'bg-softDark',
-      success: 'bg-success',
-      danger: 'bg-rose-600',
+      default:
+        'border-slate-400 bg-slate-300 dark:border-border dark:bg-softDark',
+      success: 'border-teal-600 bg-success text-light',
+      danger: 'border-rose-600 bg-rose-600 text-light',
     },
     size: {
       icon: 'px-[10px]',

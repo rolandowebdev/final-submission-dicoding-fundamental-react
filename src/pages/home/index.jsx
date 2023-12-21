@@ -8,9 +8,9 @@ import {
   EmptyNotes,
   buttonVariants,
 } from '../../components/ui'
-import { ROUTES } from '../../constants/path-name'
 import { archiveNote, deleteNote, getActiveNotes } from '../../utils/notes'
 import { showErrorToaster, showSuccessToaster } from '../../utils/toast'
+import { ROUTES } from '../../constants/path-name'
 
 export const HomePage = () => {
   const [activeNotes, setActiveNotes] = useState([])

@@ -59,7 +59,7 @@ export const CreatePage = () => {
         </div>
         <form
           onSubmit={handleCreateNote}
-          className="my-5 flex flex-col gap-4 rounded-md border border-border bg-softDark p-5">
+          className="my-5 flex flex-col gap-4 rounded-md border border-slate-400 bg-slate-300 p-5 dark:border-border dark:bg-softDark">
           <Input
             required
             id="title"

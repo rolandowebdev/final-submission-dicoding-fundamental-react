@@ -52,14 +52,14 @@ export const DetailPage = () => {
                 <img
                   src="/assets/example.webp"
                   alt="Example note"
-                  className="h-60 w-full rounded-md"
+                  className="h-64 w-full rounded-md border border-slate-400 dark:border-border"
                 />
                 <Heading className="mt-4">{note?.title}</Heading>
-                <p className="my-2 leading-6 text-slate-300">
+                <p className="my-2 leading-6 text-softDark dark:text-slate-300">
                   {parse(note?.body || '')}
                 </p>
                 <time
-                  className="w-max rounded-sm bg-softDark px-2 py-1 text-xs"
+                  className="w-max rounded-sm border border-slate-400 bg-slate-300 px-2 py-1 text-xs dark:border-border dark:bg-softDark"
                   dateTime={note?.createdAt}>
                   {showFormattedDate(note?.createdAt)}
                 </time>

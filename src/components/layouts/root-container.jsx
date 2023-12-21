@@ -6,7 +6,7 @@ export const RootContainer = ({ children, className, ...rest }) => {
     <div
       {...rest}
       className={clsx(
-        'flex min-h-screen flex-col bg-dark px-2 text-light sm:px-4',
+        'flex min-h-screen flex-col bg-light px-2 text-dark duration-300 dark:bg-dark dark:text-light sm:px-4',
         className,
       )}>
       {children}

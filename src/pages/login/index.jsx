@@ -41,13 +41,14 @@ export const LoginPage = () => {
         <Heading className="mb-5 text-center">Login to Snap</Heading>
         <form
           onSubmit={handleLogin}
-          className="flex flex-col gap-4 rounded-md border border-border bg-softDark p-5">
+          className="flex flex-col gap-4 rounded-md border border-slate-400 bg-slate-300 p-5 dark:border-border dark:bg-softDark">
           <Input
             id="email"
             label="Email"
             type="email"
             value={email}
             onChange={onEmailChange}
+            placeholder="e.g. anya@gmail.com"
           />
           <Input
             id="password"
@@ -55,6 +56,7 @@ export const LoginPage = () => {
             type="password"
             value={password}
             onChange={onPasswordChange}
+            placeholder="********"
           />
           <Button
             color="success"
@@ -63,7 +65,7 @@ export const LoginPage = () => {
             {loading ? <Loader2 className="h-5 w-5 animate-spin" /> : 'Login'}
           </Button>
         </form>
-        <div className="mt-4 rounded-md border border-border p-4 text-center text-sm">
+        <div className="mt-4 rounded-md border border-slate-400 p-4 text-center text-sm dark:border-border">
           <p>
             Don&apos;t have an account?{' '}
             <Link
