@@ -7,7 +7,7 @@ import { Navbar, RootContainer } from '../../components/layouts'
 import { Heading, DetailSkeleton, buttonVariants } from '../../components/ui'
 import { showFormattedDate } from '../../utils/formattedDate'
 import { getNote } from '../../utils/notes'
-import { showErrorToaster, showSuccessToaster } from '../../utils/toast'
+import { showErrorToaster } from '../../utils/toast'
 
 export const DetailPage = () => {
   const { noteId } = useParams()
@@ -49,7 +49,7 @@ export const DetailPage = () => {
             ) : (
               <>
                 <img
-                  src="/example.webp"
+                  src="/assets/example.webp"
                   alt="Example note"
                   className="h-60 w-full rounded-md"
                 />

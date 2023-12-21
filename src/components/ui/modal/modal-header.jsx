@@ -5,7 +5,7 @@ import { Heading } from '../heading'
 
 export const ModalHeader = ({ title, handleHideModal }) => {
   return (
-    <header className="border-b-brand-softLight dark:border-b-brand-softDark flex w-full items-center justify-between border-b-[1px] pb-3">
+    <header className="flex w-full items-center justify-between border-b-2 border-b-light pb-3">
       <Heading size="h2">{title}</Heading>
       <Button size="icon" onClick={handleHideModal}>
         <X />

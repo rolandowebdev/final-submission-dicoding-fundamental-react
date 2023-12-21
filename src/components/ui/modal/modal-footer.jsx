@@ -3,7 +3,7 @@ import { Button } from '../button'
 
 export const ModalFooter = ({ children, handleHideModal }) => {
   return (
-    <footer className="flex items-center justify-end gap-4 pt-8">
+    <footer className="flex items-center justify-end gap-4 pt-6">
       <Button onClick={handleHideModal}>Cancel</Button>
       {children}
     </footer>
