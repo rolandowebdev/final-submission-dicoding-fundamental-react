@@ -10,13 +10,16 @@ import {
   Textarea,
   buttonVariants,
 } from '../../components/ui'
+import { EN, ID } from '../../constants/language'
 import { ROUTES } from '../../constants/path-name'
 import { useInput } from '../../hooks/useInput'
+import { useLanguage } from '../../hooks/useLanguage'
 import { addNote } from '../../utils/notes'
 import { showErrorToaster, showSuccessToaster } from '../../utils/toast'
 
 export const CreatePage = () => {
   const navigate = useNavigate()
+  const { language } = useLanguage()
   const [loading, setLoading] = useState(false)
 
   const [title, resetTitle, onTitleChange] = useInput('')
@@ -37,7 +40,9 @@ export const CreatePage = () => {
 
     resetTitle()
     resetBody()
-    showSuccessToaster({ message: 'Note created successfully' })
+    showSuccessToaster({
+      message: `${language === 'en' ? ID['create-notif'] : EN['create-notif']}`,
+    })
     setLoading(false)
     navigate(`/${ROUTES.DASHBOARD}`)
   }
@@ -53,9 +58,11 @@ export const CreatePage = () => {
               buttonVariants(),
               'absolute flex w-max items-center',
             )}>
-            <ChevronLeft size={22} /> Back to Dashboard
+            <ChevronLeft size={22} /> {language === 'en' ? ID.back : EN.back}
           </Link>
-          <Heading className="text-center">Create Note</Heading>
+          <Heading className="text-center">
+            {language === 'en' ? ID['create-note'] : EN['create-note']}
+          </Heading>
         </div>
         <form
           onSubmit={handleCreateNote}
@@ -63,7 +70,7 @@ export const CreatePage = () => {
           <Input
             required
             id="title"
-            label="title"
+            label={language === 'en' ? ID.title : EN.title}
             type="text"
             value={title}
             onChange={onTitleChange}
@@ -71,7 +78,7 @@ export const CreatePage = () => {
           <Textarea
             required
             id="body"
-            label="body"
+            label={language === 'en' ? ID.body : EN.body}
             value={body}
             onChange={onBodyChange}
           />
@@ -79,7 +86,11 @@ export const CreatePage = () => {
             color="success"
             type="submit"
             className="flex h-10 w-full items-center justify-center">
-            {loading ? <Loader2 className="h-5 w-5 animate-spin" /> : 'Create'}
+            {loading ? (
+              <Loader2 className="h-5 w-5 animate-spin" />
+            ) : (
+              `${language === 'en' ? ID.create : EN.create}`
+            )}
           </Button>
         </form>
       </main>

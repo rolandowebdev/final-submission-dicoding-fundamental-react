@@ -3,7 +3,7 @@ import { ROUTES } from '../constants/path-name'
 import { ArchivedPage } from '../pages/archived'
 import { CreatePage } from '../pages/create'
 import { DetailPage } from '../pages/detail'
-import { HomePage } from '../pages/home'
+import { DashboardPage } from '../pages/dashboard'
 import { LoginPage } from '../pages/login'
 import { RegisterPage } from '../pages/register'
 import { getUserLogged } from '../utils/auth'
@@ -48,7 +48,7 @@ export const routes = createBrowserRouter([
     children: [
       {
         path: ROUTES.DASHBOARD,
-        element: <HomePage />,
+        element: <DashboardPage />,
         loader: () => protectedRoutes(),
       },
       {

@@ -5,6 +5,9 @@ import { ROUTES } from '../../constants/path-name'
 import { showFormattedDate } from '../../utils/formattedDate'
 import { Modal } from '../layouts'
 import { Heading } from './heading'
+import { useLanguage } from '../../hooks/useLanguage'
+import { EN, ID } from '../../constants/language'
+import { Button } from './button'
 
 export const CardNote = ({
   children,
@@ -13,9 +16,12 @@ export const CardNote = ({
   body,
   createdAt,
   handleDelete,
+  handleArchive,
 }) => {
+  const { language } = useLanguage()
+
   return (
-    <div className="flex min-h-[290px] select-none flex-col gap-3 rounded-md border border-slate-400 bg-slate-300 p-4 duration-300 hover:-translate-y-1 hover:shadow-sm dark:border-border dark:bg-softDark dark:hover:bg-softDark/70 dark:hover:shadow-softDark">
+    <div className="flex min-h-[290px] select-none flex-col gap-3 rounded-md border border-slate-400 bg-slate-300 p-4 duration-300 hover:shadow-sm dark:border-border dark:bg-softDark dark:hover:bg-softDark/70 dark:hover:shadow-softDark">
       <Link to={`/${ROUTES.NOTES}/${id}`} className="hover:underline">
         <Heading size="h2">{title}</Heading>
       </Link>
@@ -29,21 +35,25 @@ export const CardNote = ({
       </time>
       <div className="mt-auto flex gap-2">
         <Modal
-          text="Delete"
-          description="Are you sure you want to delete this note?"
+          text={language === 'en' ? ID.delete : EN.delete}
+          description={
+            language === 'en' ? ID['delete-message'] : EN['delete-message']
+          }
           handleAction={() => handleDelete(id)}
         />
-        {children}
+        <Button onClick={() => handleArchive(id)} color="success" size="icon">
+          {language === 'en' ? ID.archive : EN.archive}
+        </Button>
       </div>
     </div>
   )
 }
 
 CardNote.propTypes = {
-  children: PropTypes.node,
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   createdAt: PropTypes.string.isRequired,
   handleDelete: PropTypes.func.isRequired,
+  handleArchive: PropTypes.func.isRequired,
 }

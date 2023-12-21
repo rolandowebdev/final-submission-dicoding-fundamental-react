@@ -5,12 +5,15 @@ import { removeAccessToken } from '../../utils/auth'
 import { Button, Heading } from '../ui'
 import { Modal } from './modal'
 import { useTheme } from '../../hooks/useTheme'
+import { useLanguage } from '../../hooks/useLanguage'
 import { Sun } from 'lucide-react'
+import { EN, ID } from '../../constants/language'
 
 export const Navbar = () => {
   const navigate = useNavigate()
   const { data } = useRouteLoaderData('user')
   const { theme, setTheme } = useTheme()
+  const { language, setLanguage } = useLanguage()
 
   const handleLogout = () => {
     removeAccessToken()
@@ -20,7 +23,9 @@ export const Navbar = () => {
   return (
     <header className="flex h-20 w-full max-w-3xl items-center justify-between border-b border-b-gray-300 dark:border-b-softDark">
       <div className="flex gap-2">
-        <Heading className="capitalize">{`Hello, ${data?.name}`}</Heading>
+        <Heading className="capitalize">{`${
+          language === 'en' ? ID.gretting : EN.gretting
+        }, ${data?.name}`}</Heading>
         <span className="h-6 w-6 animate-wiggle text-3xl motion-reduce:animate-none">
           👋️
         </span>
@@ -28,21 +33,25 @@ export const Navbar = () => {
       <nav>
         <ul className="flex items-center gap-4">
           <li>
-            <Button size="icon">
-              <Languages />
+            <Button
+              onClick={() => setLanguage(language === 'en' ? 'id' : 'en')}
+              size="icon">
+              {language === 'en' ? 'EN' : 'ID'}
             </Button>
           </li>
           <li>
             <Button
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
               size="icon">
-              {theme === 'dark' ? <Moon /> : <Sun />}
+              {theme === 'dark' ? <Sun /> : <Moon />}
             </Button>
           </li>
           <li>
             <Modal
-              text="Logout"
-              description={`Are you sure you want to logout ${data?.name}?`}
+              text={language === 'en' ? ID.logout : EN.logout}
+              description={`${
+                language === 'en' ? ID['logout-message'] : EN['logout-message']
+              } ${data?.name}?`}
               handleAction={handleLogout}
             />
           </li>

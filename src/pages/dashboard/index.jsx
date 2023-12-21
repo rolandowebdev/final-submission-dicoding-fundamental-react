@@ -11,8 +11,12 @@ import {
 import { archiveNote, deleteNote, getActiveNotes } from '../../utils/notes'
 import { showErrorToaster, showSuccessToaster } from '../../utils/toast'
 import { ROUTES } from '../../constants/path-name'
+import { useLanguage } from '../../hooks/useLanguage'
+import { EN, ID } from '../../constants/language'
 
-export const HomePage = () => {
+export const DashboardPage = () => {
+  const { language } = useLanguage()
+
   const [activeNotes, setActiveNotes] = useState([])
   const [loading, setLoading] = useState(true)
 
@@ -32,7 +36,9 @@ export const HomePage = () => {
   const handleDelete = async (id) => {
     await deleteNote(id)
     getNotes()
-    showSuccessToaster({ message: 'Note deleted successfully' })
+    showSuccessToaster({
+      message: `${language === 'en' ? ID['delete-notif'] : EN['delete-notif']}`,
+    })
   }
 
   const handleArchive = async (id) => {
@@ -52,10 +58,10 @@ export const HomePage = () => {
           <div className="mb-6 flex items-center justify-between">
             <div className="flex gap-2">
               <Link to={`/${ROUTES.ARCHIVED}`} className={buttonVariants()}>
-                Archived
+                {language === 'en' ? ID.archive : EN.archive}
               </Link>
               <Link to={`/${ROUTES.CREATE}`} className={buttonVariants()}>
-                Create Note
+                {language === 'en' ? ID['create-note'] : EN['create-note']}
               </Link>
             </div>
           </div>
@@ -69,18 +75,18 @@ export const HomePage = () => {
           ) : activeNotes.length > 0 ? (
             <CardContainer notes={activeNotes}>
               {activeNotes.map((note) => (
-                <CardNote key={note.id} {...note} handleDelete={handleDelete}>
-                  <Button
-                    onClick={() => handleArchive(note.id)}
-                    color="success"
-                    size="icon">
-                    Archive
-                  </Button>
-                </CardNote>
+                <CardNote
+                  key={note.id}
+                  {...note}
+                  handleDelete={handleDelete}
+                  handleArchive={handleArchive}
+                />
               ))}
             </CardContainer>
           ) : (
-            <EmptyNotes text="List of active notes is empty" />
+            <EmptyNotes
+              text={language === 'en' ? ID['active-empty'] : EN['active-empty']}
+            />
           )}
         </article>
       </main>

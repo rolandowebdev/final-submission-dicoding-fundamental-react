@@ -9,9 +9,13 @@ import { ROUTES } from '../../constants/path-name'
 import { showFormattedDate } from '../../utils/formattedDate'
 import { getNote } from '../../utils/notes'
 import { showErrorToaster } from '../../utils/toast'
+import { EN, ID } from '../../constants/language'
+import { useLanguage } from '../../hooks/useLanguage'
 
 export const DetailPage = () => {
   const { noteId } = useParams()
+  const { language } = useLanguage()
+
   const [note, setNote] = useState({})
   const [loading, setLoading] = useState(true)
 
@@ -40,7 +44,7 @@ export const DetailPage = () => {
           <Link
             to={`/${ROUTES.DASHBOARD}`}
             className={clsx(buttonVariants(), 'flex w-max items-center')}>
-            <ChevronLeft size={22} /> Back to Dashboard
+            <ChevronLeft size={22} /> {language === 'en' ? ID.back : EN.back}
           </Link>
         </header>
         <article className="mt-4">

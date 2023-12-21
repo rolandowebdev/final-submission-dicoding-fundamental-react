@@ -7,11 +7,14 @@ import { ROUTES } from '../../constants/path-name'
 import { useInput } from '../../hooks/useInput'
 import { register } from '../../utils/auth'
 import { showErrorToaster, showSuccessToaster } from '../../utils/toast'
+import { useLanguage } from '../../hooks/useLanguage'
+import { EN, ID } from '../../constants/language'
 
 export const RegisterPage = () => {
   const navigate = useNavigate()
-  const [loading, setLoading] = useState(false)
+  const { language } = useLanguage()
 
+  const [loading, setLoading] = useState(false)
   const [name, resetName, onNameChange] = useInput('')
   const [email, resetEmail, onEmailChange] = useInput('')
   const [password, resetPassword, onPasswordChange] = useInput('')
@@ -27,7 +30,11 @@ export const RegisterPage = () => {
 
     if (password !== confirmPassword) {
       passwordsMatch = false
-      showErrorToaster({ message: 'Passwords do not match' })
+      showErrorToaster({
+        message: `${
+          language === 'en' ? ID['password-mismatch'] : EN['password-mismatch']
+        }`,
+      })
       setLoading(false)
       return
     }
@@ -45,7 +52,11 @@ export const RegisterPage = () => {
       resetEmail()
       resetPassword()
       resetConfirmPassword()
-      showSuccessToaster({ message: 'User created successfully' })
+      showSuccessToaster({
+        message: `${
+          language === 'en' ? ID['register-notif'] : EN['register-notif']
+        }`,
+      })
       setLoading(false)
       navigate(`/${ROUTES.LOGIN}`)
     }
@@ -54,13 +65,15 @@ export const RegisterPage = () => {
   return (
     <RootContainer className="items-center justify-center">
       <main className="w-full max-w-xs">
-        <Heading className="mb-5 text-center">Register to Snap</Heading>
+        <Heading className="mb-5 text-center">
+          {language === 'en' ? ID['register-to-snap'] : EN['register-to-snap']}
+        </Heading>
         <form
           onSubmit={handleRegister}
           className="flex flex-col gap-4 rounded-md border border-slate-400 bg-slate-300 p-5 dark:border-border dark:bg-softDark">
           <Input
             id="name"
-            label="Name"
+            label={language === 'en' ? ID.name : EN.name}
             type="text"
             value={name}
             onChange={onNameChange}
@@ -68,7 +81,7 @@ export const RegisterPage = () => {
           />
           <Input
             id="email"
-            label="Email"
+            label={language === 'en' ? ID.email : EN.email}
             type="email"
             value={email}
             onChange={onEmailChange}
@@ -76,7 +89,7 @@ export const RegisterPage = () => {
           />
           <Input
             id="password"
-            label="Password"
+            label={language === 'en' ? ID.password : EN.password}
             type="password"
             value={password}
             onChange={onPasswordChange}
@@ -84,7 +97,11 @@ export const RegisterPage = () => {
           />
           <Input
             id="confirmPassword"
-            label="Confirm Password"
+            label={
+              language === 'en'
+                ? ID['confirm-password']
+                : EN['confirm-password']
+            }
             type="password"
             value={confirmPassword}
             onChange={onConfirmPasswordChange}
@@ -97,17 +114,19 @@ export const RegisterPage = () => {
             {loading ? (
               <Loader2 className="h-5 w-5 animate-spin" />
             ) : (
-              'Register'
+              `${language === 'en' ? ID.register : EN.register}`
             )}
           </Button>
         </form>
         <div className="mt-4 rounded-md border border-slate-400 p-4 text-center text-sm dark:border-border">
           <p>
-            Already have an account?{' '}
+            {language === 'en'
+              ? ID['already-have-account']
+              : EN['already-have-account']}{' '}
             <Link
               to={`/${ROUTES.LOGIN}`}
               className="cursor-pointer text-blue-600 hover:underline">
-              Login
+              {language === 'en' ? ID.login : EN.login}
             </Link>
           </p>
         </div>

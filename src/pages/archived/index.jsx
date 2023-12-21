@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { CardContainer, Navbar, RootContainer } from '../../components/layouts'
 import {
-  Button,
   CardNote,
   CardSkeleton,
   EmptyNotes,
@@ -13,8 +12,12 @@ import {
 import { ROUTES } from '../../constants/path-name'
 import { deleteNote, getArchivedNotes, unarchiveNote } from '../../utils/notes'
 import { showErrorToaster, showSuccessToaster } from '../../utils/toast'
+import { useLanguage } from '../../hooks/useLanguage'
+import { EN, ID } from '../../constants/language'
 
 export const ArchivedPage = () => {
+  const { language } = useLanguage()
+
   const [archivedNotes, setArchivedNotes] = useState([])
   const [loading, setLoading] = useState(true)
 
@@ -34,7 +37,9 @@ export const ArchivedPage = () => {
   const handleDelete = async (id) => {
     await deleteNote(id)
     getNotes()
-    showSuccessToaster({ message: 'Note deleted successfully' })
+    showSuccessToaster({
+      message: `${language === 'en' ? ID['delete-notif'] : EN['delete-notif']}`,
+    })
   }
 
   const handleUnarchive = async (id) => {
@@ -55,7 +60,7 @@ export const ArchivedPage = () => {
             <Link
               to={`/${ROUTES.DASHBOARD}`}
               className={clsx(buttonVariants(), 'flex w-max items-center')}>
-              <ChevronLeft size={22} /> Back to Dashboard
+              <ChevronLeft size={22} /> {language === 'en' ? ID.back : EN.back}
             </Link>
           </div>
 
@@ -68,18 +73,20 @@ export const ArchivedPage = () => {
           ) : archivedNotes?.length > 0 ? (
             <CardContainer notes={archivedNotes}>
               {archivedNotes.map((note) => (
-                <CardNote key={note.id} {...note} handleDelete={handleDelete}>
-                  <Button
-                    onClick={() => handleUnarchive(note.id)}
-                    color="success"
-                    size="icon">
-                    Unarchive
-                  </Button>
-                </CardNote>
+                <CardNote
+                  key={note.id}
+                  {...note}
+                  handleDelete={handleDelete}
+                  handleArchive={handleUnarchive}
+                />
               ))}
             </CardContainer>
           ) : (
-            <EmptyNotes text="List of archived notes is empty" />
+            <EmptyNotes
+              text={
+                language === 'en' ? ID['archived-empty'] : EN['archived-empty']
+              }
+            />
           )}
         </article>
       </main>
