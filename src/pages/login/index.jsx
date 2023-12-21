@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { RootContainer } from '../../components/layouts'
 import { Button, Heading, Input } from '../../components/ui'
+import { ROUTES } from '../../constants/path-name'
 import { useInput } from '../../hooks/useInput'
 import { login, putAccessToken } from '../../utils/auth'
 import { showErrorToaster } from '../../utils/toast'
@@ -31,7 +32,7 @@ export const LoginPage = () => {
     resetEmail()
     resetPassword()
     setLoading(false)
-    navigate('/dashboard')
+    navigate(`/${ROUTES.DASHBOARD}`)
   }
 
   return (
@@ -66,7 +67,7 @@ export const LoginPage = () => {
           <p>
             Don&apos;t have an account?{' '}
             <Link
-              to="/register"
+              to={`/${ROUTES.REGISTER}`}
               className="cursor-pointer text-blue-600 hover:underline">
               Register
             </Link>

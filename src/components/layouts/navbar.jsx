@@ -1,5 +1,6 @@
 import { Languages, Moon } from 'lucide-react'
 import { useNavigate, useRouteLoaderData } from 'react-router-dom'
+import { ROUTES } from '../../constants/path-name'
 import { removeAccessToken } from '../../utils/auth'
 import { Button, Heading } from '../ui'
 import { Modal } from './modal'
@@ -10,7 +11,7 @@ export const Navbar = () => {
 
   const handleLogout = () => {
     removeAccessToken()
-    navigate('/login')
+    navigate(`/${ROUTES.LOGIN}`)
   }
 
   return (

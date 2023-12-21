@@ -1,3 +1,5 @@
+import clsx from 'clsx'
+import { ChevronLeft } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { CardContainer, Navbar, RootContainer } from '../../components/layouts'
@@ -8,9 +10,8 @@ import {
   EmptyNotes,
   buttonVariants,
 } from '../../components/ui'
+import { ROUTES } from '../../constants/path-name'
 import { deleteNote, getArchivedNotes, unarchiveNote } from '../../utils/notes'
-import { ChevronLeft } from 'lucide-react'
-import clsx from 'clsx'
 import { showErrorToaster, showSuccessToaster } from '../../utils/toast'
 
 export const ArchivedPage = () => {
@@ -52,7 +53,7 @@ export const ArchivedPage = () => {
         <article>
           <div className="mb-6 flex items-center justify-between">
             <Link
-              to="/dashboard"
+              to={`/${ROUTES.DASHBOARD}`}
               className={clsx(buttonVariants(), 'flex w-max items-center')}>
               <ChevronLeft size={22} /> Back to Dashboard
             </Link>

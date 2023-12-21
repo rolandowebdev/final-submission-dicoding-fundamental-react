@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { RootContainer } from '../../components/layouts'
 import { Button, Heading, Input } from '../../components/ui'
+import { ROUTES } from '../../constants/path-name'
 import { useInput } from '../../hooks/useInput'
 import { register } from '../../utils/auth'
 import { showErrorToaster, showSuccessToaster } from '../../utils/toast'
@@ -46,7 +47,7 @@ export const RegisterPage = () => {
       resetConfirmPassword()
       showSuccessToaster({ message: 'User created successfully' })
       setLoading(false)
-      navigate('/login')
+      navigate(`/${ROUTES.LOGIN}`)
     }
   }
 
@@ -100,7 +101,7 @@ export const RegisterPage = () => {
           <p>
             Already have an account?{' '}
             <Link
-              to="/login"
+              to={`/${ROUTES.LOGIN}`}
               className="cursor-pointer text-blue-600 hover:underline">
               Login
             </Link>

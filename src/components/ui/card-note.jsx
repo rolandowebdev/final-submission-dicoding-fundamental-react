@@ -1,9 +1,10 @@
 import parse from 'html-react-parser'
 import PropTypes from 'prop-types'
-import { showFormattedDate } from '../../utils/formattedDate'
-import { Heading } from './heading'
-import { Modal } from '../layouts'
 import { Link } from 'react-router-dom'
+import { ROUTES } from '../../constants/path-name'
+import { showFormattedDate } from '../../utils/formattedDate'
+import { Modal } from '../layouts'
+import { Heading } from './heading'
 
 export const CardNote = ({
   children,
@@ -15,7 +16,7 @@ export const CardNote = ({
 }) => {
   return (
     <div className="flex min-h-[290px] select-none flex-col gap-3 rounded-md border border-border bg-softDark p-4 transition-all duration-300 hover:bg-softDark/70 hover:shadow-sm hover:shadow-softDark">
-      <Link to={`/notes/${id}`} className="hover:underline">
+      <Link to={`/${ROUTES.NOTES}/${id}`} className="hover:underline">
         <Heading size="h2">{title}</Heading>
       </Link>
       <p className="leading-6 text-slate-300">{parse(body)}</p>

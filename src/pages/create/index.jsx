@@ -10,6 +10,7 @@ import {
   Textarea,
   buttonVariants,
 } from '../../components/ui'
+import { ROUTES } from '../../constants/path-name'
 import { useInput } from '../../hooks/useInput'
 import { addNote } from '../../utils/notes'
 import { showErrorToaster, showSuccessToaster } from '../../utils/toast'
@@ -38,7 +39,7 @@ export const CreatePage = () => {
     resetBody()
     showSuccessToaster({ message: 'Note created successfully' })
     setLoading(false)
-    navigate('/dashboard')
+    navigate(`/${ROUTES.DASHBOARD}`)
   }
 
   return (
@@ -47,7 +48,7 @@ export const CreatePage = () => {
       <main className="my-8 w-full max-w-3xl">
         <div className="relative">
           <Link
-            to="/dashboard"
+            to={`/${ROUTES.DASHBOARD}`}
             className={clsx(
               buttonVariants(),
               'absolute flex w-max items-center',

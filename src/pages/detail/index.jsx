@@ -4,7 +4,8 @@ import { ChevronLeft } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { Navbar, RootContainer } from '../../components/layouts'
-import { Heading, DetailSkeleton, buttonVariants } from '../../components/ui'
+import { DetailSkeleton, Heading, buttonVariants } from '../../components/ui'
+import { ROUTES } from '../../constants/path-name'
 import { showFormattedDate } from '../../utils/formattedDate'
 import { getNote } from '../../utils/notes'
 import { showErrorToaster } from '../../utils/toast'
@@ -37,7 +38,7 @@ export const DetailPage = () => {
       <main className="my-8 w-full max-w-3xl">
         <header>
           <Link
-            to="/dashboard"
+            to={`/${ROUTES.DASHBOARD}`}
             className={clsx(buttonVariants(), 'flex w-max items-center')}>
             <ChevronLeft size={22} /> Back to Dashboard
           </Link>

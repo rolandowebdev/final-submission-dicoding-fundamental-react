@@ -8,6 +8,7 @@ import {
   EmptyNotes,
   buttonVariants,
 } from '../../components/ui'
+import { ROUTES } from '../../constants/path-name'
 import { archiveNote, deleteNote, getActiveNotes } from '../../utils/notes'
 import { showErrorToaster, showSuccessToaster } from '../../utils/toast'
 
@@ -50,10 +51,10 @@ export const HomePage = () => {
         <article>
           <div className="mb-6 flex items-center justify-between">
             <div className="flex gap-2">
-              <Link to="/archived" className={buttonVariants()}>
+              <Link to={`/${ROUTES.ARCHIVED}`} className={buttonVariants()}>
                 Archived
               </Link>
-              <Link to="/create" className={buttonVariants()}>
+              <Link to={`/${ROUTES.CREATE}`} className={buttonVariants()}>
                 Create Note
               </Link>
             </div>

@@ -1,71 +1,71 @@
 import { Navigate, createBrowserRouter, redirect } from 'react-router-dom'
+import { ROUTES } from '../constants/path-name'
 import { ArchivedPage } from '../pages/archived'
 import { CreatePage } from '../pages/create'
+import { DetailPage } from '../pages/detail'
 import { HomePage } from '../pages/home'
 import { LoginPage } from '../pages/login'
 import { RegisterPage } from '../pages/register'
 import { getUserLogged } from '../utils/auth'
-import { Outlet } from 'react-router-dom'
-import { DetailPage } from '../pages/detail'
 
 const protectedRoutes = () => {
   if (!localStorage.getItem('accessToken')) {
-    return redirect('/login')
+    return redirect(`/${ROUTES.LOGIN}`)
   }
   return null
 }
 
 const loginLoader = () => {
   if (localStorage.getItem('accessToken')) {
-    return redirect('/dashboard')
+    return redirect(`/${ROUTES.DASHBOARD}`)
   }
   return null
 }
 
 export const routes = createBrowserRouter([
   {
-    path: '/',
+    path: ROUTES.ROOT,
     children: [
       {
         index: true,
-        element: <Navigate to="login" replace />,
+        element: <Navigate to={`/${ROUTES.LOGIN}`} replace />,
       },
       {
-        path: 'login',
+        path: ROUTES.LOGIN,
         element: <LoginPage />,
         loader: () => loginLoader(),
       },
       {
-        path: 'register',
+        path: ROUTES.REGISTER,
         element: <RegisterPage />,
       },
     ],
   },
   {
     id: 'user',
-    path: '/',
+    path: ROUTES.ROOT,
     loader: () => getUserLogged(),
     children: [
       {
-        path: 'dashboard',
+        path: ROUTES.DASHBOARD,
         element: <HomePage />,
         loader: () => protectedRoutes(),
       },
       {
-        path: 'archived',
+        path: ROUTES.ARCHIVED,
         element: <ArchivedPage />,
         loader: () => protectedRoutes(),
       },
       {
-        path: 'create',
+        path: ROUTES.CREATE,
         element: <CreatePage />,
         loader: () => protectedRoutes(),
       },
       {
-        path: 'notes',
+        path: ROUTES.NOTES,
         children: [
           {
-            path: ':noteId',
+            path: ROUTES.NOTE_ID,
             element: <DetailPage />,
             loader: () => protectedRoutes(),
           },
