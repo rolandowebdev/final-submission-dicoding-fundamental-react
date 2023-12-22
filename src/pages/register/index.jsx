@@ -1,14 +1,14 @@
 import { Loader2 } from 'lucide-react'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { RootContainer } from '../../components/layouts'
-import { Button, Heading, Input } from '../../components/ui'
-import { EN, ID } from '../../constants/language'
-import { ROUTES } from '../../constants/path-name'
-import { useInput } from '../../hooks/useInput'
-import { useLanguage } from '../../hooks/useLanguage'
-import { register } from '../../utils/auth'
-import { showErrorToaster, showSuccessToaster } from '../../utils/toast'
+import { RootContainer } from '@/components/layouts'
+import { Button, Heading, Input } from '@/components/ui'
+import { EN, ID } from '@/constants/language'
+import { ROUTES } from '@/constants/path-name'
+import { useInput } from '@/hooks/useInput'
+import { useLanguage } from '@/hooks/useLanguage'
+import { register } from '@/utils/auth'
+import { showErrorToaster, showSuccessToaster } from '@/utils/toast'
 
 export const RegisterPage = () => {
   const navigate = useNavigate()
@@ -64,13 +64,13 @@ export const RegisterPage = () => {
 
   return (
     <RootContainer className="items-center justify-center">
-      <main className="my-auto w-full max-w-xs">
+      <main className="my-auto w-full max-w-xs py-8">
         <Heading className="mb-5 text-center">
           {language === 'en' ? ID['register-to-snap'] : EN['register-to-snap']}
         </Heading>
         <form
           onSubmit={handleRegister}
-          className="dark:border-brand-border dark:bg-brand-softDark bg-brand-softLight flex flex-col gap-4 rounded-md border border-slate-300 p-5">
+          className="flex flex-col gap-4 rounded-md border border-slate-300 bg-brand-softLight p-5 dark:border-brand-border dark:bg-brand-softDark">
           <Input
             id="name"
             label={language === 'en' ? ID.name : EN.name}
@@ -118,7 +118,7 @@ export const RegisterPage = () => {
             )}
           </Button>
         </form>
-        <div className="dark:border-brand-border mt-4 rounded-md border border-slate-300 p-4 text-center text-sm">
+        <div className="mt-4 rounded-md border border-slate-300 p-4 text-center text-sm dark:border-brand-border">
           <p>
             {language === 'en'
               ? ID['already-have-account']

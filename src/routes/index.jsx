@@ -1,13 +1,13 @@
 import { Navigate, createBrowserRouter, redirect } from 'react-router-dom'
-import { ROUTES } from '../constants/path-name'
-import { ArchivedPage } from '../pages/archived'
-import { CreatePage } from '../pages/create'
-import { DashboardPage } from '../pages/dashboard'
-import { DetailPage } from '../pages/detail'
-import { LoginPage } from '../pages/login'
-import { NotFound } from '../pages/notfound'
-import { RegisterPage } from '../pages/register'
-import { getUserLogged } from '../utils/auth'
+import { ROUTES } from '@/constants/path-name'
+import { ArchivedPage } from '@/pages/archived'
+import { CreatePage } from '@/pages/create'
+import { DashboardPage } from '@/pages/dashboard'
+import { DetailPage } from '@/pages/detail'
+import { LoginPage } from '@/pages/login'
+import { NotFound } from '@/pages/notfound'
+import { RegisterPage } from '@/pages/register'
+import { getUserLogged } from '@/utils/auth'
 
 const protectedRoutes = () => {
   if (!localStorage.getItem('accessToken')) {

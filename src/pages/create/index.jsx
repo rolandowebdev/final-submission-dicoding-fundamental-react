@@ -9,13 +9,13 @@ import {
   Input,
   Textarea,
   buttonVariants,
-} from '../../components/ui'
-import { EN, ID } from '../../constants/language'
-import { ROUTES } from '../../constants/path-name'
-import { useInput } from '../../hooks/useInput'
-import { useLanguage } from '../../hooks/useLanguage'
-import { addNote } from '../../utils/notes'
-import { showErrorToaster, showSuccessToaster } from '../../utils/toast'
+} from '@/components/ui'
+import { EN, ID } from '@/constants/language'
+import { ROUTES } from '@/constants/path-name'
+import { useInput } from '@/hooks/useInput'
+import { useLanguage } from '@/hooks/useLanguage'
+import { addNote } from '@/utils/notes'
+import { showErrorToaster, showSuccessToaster } from '@/utils/toast'
 
 export const CreatePage = () => {
   const navigate = useNavigate()
@@ -66,7 +66,7 @@ export const CreatePage = () => {
         </div>
         <form
           onSubmit={handleCreateNote}
-          className="dark:border-brand-border dark:bg-brand-softDark bg-brand-softLight my-5 flex flex-col gap-4 rounded-md border border-slate-300 p-5">
+          className="my-5 flex flex-col gap-4 rounded-md border border-slate-300 bg-brand-softLight p-5 dark:border-brand-border dark:bg-brand-softDark">
           <Input
             required
             id="title"

@@ -6,18 +6,18 @@ import {
   Footer,
   Navbar,
   RootContainer,
-} from '../../components/layouts'
+} from '@/components/layouts'
 import {
   CardNote,
   CardSkeleton,
   EmptyNotes,
   buttonVariants,
-} from '../../components/ui'
-import { EN, ID } from '../../constants/language'
-import { ROUTES } from '../../constants/path-name'
-import { useLanguage } from '../../hooks/useLanguage'
-import { archiveNote, deleteNote, getActiveNotes } from '../../utils/notes'
-import { showErrorToaster, showSuccessToaster } from '../../utils/toast'
+} from '@/components/ui'
+import { EN, ID } from '@/constants/language'
+import { ROUTES } from '@/constants/path-name'
+import { useLanguage } from '@/hooks/useLanguage'
+import { archiveNote, deleteNote, getActiveNotes } from '@/utils/notes'
+import { showErrorToaster, showSuccessToaster } from '@/utils/toast'
 
 export const DashboardPage = () => {
   const { language } = useLanguage()
@@ -69,7 +69,7 @@ export const DashboardPage = () => {
               </Link>
               <Link
                 to={`/${ROUTES.CREATE}`}
-                className={clsx(buttonVariants(), 'w-32')}>
+                className={clsx(buttonVariants(), 'w-32 text-center')}>
                 {language === 'en' ? ID['create-note'] : EN['create-note']}
               </Link>
             </div>

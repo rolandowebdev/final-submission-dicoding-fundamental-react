@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
-import { EN, ID } from '../../../constants/language'
-import { useLanguage } from '../../../hooks/useLanguage'
+import { EN, ID } from '@/constants/language'
+import { useLanguage } from '@/hooks/useLanguage'
 import { Button } from '../button'
 
 export const ModalFooter = ({ children, handleHideModal }) => {

@@ -1,10 +1,10 @@
 import parse from 'html-react-parser'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-import { EN, ID } from '../../constants/language'
-import { ROUTES } from '../../constants/path-name'
-import { useLanguage } from '../../hooks/useLanguage'
-import { showFormattedDate } from '../../utils/formattedDate'
+import { EN, ID } from '@/constants/language'
+import { ROUTES } from '@/constants/path-name'
+import { useLanguage } from '@/hooks/useLanguage'
+import { showFormattedDate } from '@/utils/formattedDate'
 import { Modal } from '../layouts'
 import { Button } from './button'
 import { Heading } from './heading'
@@ -21,13 +21,13 @@ export const CardNote = ({
   const { language } = useLanguage()
 
   return (
-    <div className="dark:border-brand-border dark:bg-brand-softDark dark:hover:bg-brand-softDark/70 dark:hover:shadow-brand-softDark bg-brand-softLight flex min-h-[290px] select-none flex-col gap-3 rounded-md border border-slate-300 p-4 duration-300 hover:shadow-sm">
+    <div className="flex min-h-[290px] select-none flex-col gap-3 rounded-md border border-slate-300 bg-brand-softLight p-4 duration-300 hover:shadow-sm dark:border-brand-border dark:bg-brand-softDark dark:hover:bg-brand-softDark/70 dark:hover:shadow-brand-softDark">
       <Link to={`/${ROUTES.NOTES}/${id}`} className="hover:underline">
         <Heading size="h2">{title}</Heading>
       </Link>
       <p className="leading-6">{parse(body)}</p>
       <time
-        className="dark:border-brand-border dark:bg-brand-dark bg-brand-light w-max rounded-sm border border-slate-300 px-2 py-1 text-xs"
+        className="w-max rounded-sm border border-slate-300 bg-brand-light px-2 py-1 text-xs dark:border-brand-border dark:bg-brand-dark"
         dateTime={createdAt}>
         {showFormattedDate(createdAt)}
       </time>

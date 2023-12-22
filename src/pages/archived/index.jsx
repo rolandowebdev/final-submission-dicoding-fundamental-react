@@ -7,18 +7,18 @@ import {
   Footer,
   Navbar,
   RootContainer,
-} from '../../components/layouts'
+} from '@/components/layouts'
 import {
   CardNote,
   CardSkeleton,
   EmptyNotes,
   buttonVariants,
-} from '../../components/ui'
-import { EN, ID } from '../../constants/language'
-import { ROUTES } from '../../constants/path-name'
-import { useLanguage } from '../../hooks/useLanguage'
-import { deleteNote, getArchivedNotes, unarchiveNote } from '../../utils/notes'
-import { showErrorToaster, showSuccessToaster } from '../../utils/toast'
+} from '@/components/ui'
+import { EN, ID } from '@/constants/language'
+import { ROUTES } from '@/constants/path-name'
+import { useLanguage } from '@/hooks/useLanguage'
+import { deleteNote, getArchivedNotes, unarchiveNote } from '@/utils/notes'
+import { showErrorToaster, showSuccessToaster } from '@/utils/toast'
 
 export const ArchivedPage = () => {
   const { language } = useLanguage()

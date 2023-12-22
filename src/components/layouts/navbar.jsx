@@ -1,10 +1,10 @@
+import { EN, ID } from '@/constants/language'
+import { ROUTES } from '@/constants/path-name'
+import { useLanguage } from '@/hooks/useLanguage'
+import { useTheme } from '@/hooks/useTheme'
+import { removeAccessToken } from '@/utils/auth'
 import { Moon, Sun } from 'lucide-react'
 import { useNavigate, useRouteLoaderData } from 'react-router-dom'
-import { EN, ID } from '../../constants/language'
-import { ROUTES } from '../../constants/path-name'
-import { useLanguage } from '../../hooks/useLanguage'
-import { useTheme } from '../../hooks/useTheme'
-import { removeAccessToken } from '../../utils/auth'
 import { Button, Heading } from '../ui'
 import { Modal } from './modal'
 
@@ -20,7 +20,7 @@ export const Navbar = () => {
   }
 
   return (
-    <header className="dark:border-b-brand-softDark flex h-20 w-full max-w-3xl items-center justify-between border-b border-b-slate-300">
+    <header className="flex h-20 w-full max-w-3xl items-center justify-between border-b border-b-slate-300 dark:border-b-brand-softDark">
       <div className="flex gap-2">
         <Heading className="capitalize">{`${
           language === 'en' ? ID.gretting : EN.gretting
