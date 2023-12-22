@@ -35,6 +35,7 @@ export const Navbar = () => {
           <li>
             <Button
               onClick={() => setLanguage(language === 'en' ? 'id' : 'en')}
+              className="w-11"
               size="icon">
               {language === 'en' ? 'EN' : 'ID'}
             </Button>
@@ -42,6 +43,7 @@ export const Navbar = () => {
           <li>
             <Button
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              className="w-11"
               size="icon">
               {theme === 'dark' ? <Sun /> : <Moon />}
             </Button>

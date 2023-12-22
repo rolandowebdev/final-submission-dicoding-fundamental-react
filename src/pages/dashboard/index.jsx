@@ -13,6 +13,7 @@ import { showErrorToaster, showSuccessToaster } from '../../utils/toast'
 import { ROUTES } from '../../constants/path-name'
 import { useLanguage } from '../../hooks/useLanguage'
 import { EN, ID } from '../../constants/language'
+import clsx from 'clsx'
 
 export const DashboardPage = () => {
   const { language } = useLanguage()
@@ -57,10 +58,14 @@ export const DashboardPage = () => {
         <article>
           <div className="mb-6 flex items-center justify-between">
             <div className="flex gap-2">
-              <Link to={`/${ROUTES.ARCHIVED}`} className={buttonVariants()}>
+              <Link
+                to={`/${ROUTES.ARCHIVED}`}
+                className={clsx(buttonVariants(), 'w-[90px] text-center')}>
                 {language === 'en' ? ID.archive : EN.archive}
               </Link>
-              <Link to={`/${ROUTES.CREATE}`} className={buttonVariants()}>
+              <Link
+                to={`/${ROUTES.CREATE}`}
+                className={clsx(buttonVariants(), 'w-32')}>
                 {language === 'en' ? ID['create-note'] : EN['create-note']}
               </Link>
             </div>

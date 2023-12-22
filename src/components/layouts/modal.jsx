@@ -23,7 +23,7 @@ export const Modal = ({ text, description, handleAction }) => {
 
   return (
     <>
-      <Button onClick={handleShowModal} color="danger" size="icon">
+      <Button onClick={handleShowModal} color="danger" className="w-20">
         {text}
       </Button>
       {isShowModal && (

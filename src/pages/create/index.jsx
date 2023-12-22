@@ -56,7 +56,7 @@ export const CreatePage = () => {
             to={`/${ROUTES.DASHBOARD}`}
             className={clsx(
               buttonVariants(),
-              'absolute flex w-max items-center',
+              'absolute flex w-[211px] items-center justify-center',
             )}>
             <ChevronLeft size={22} /> {language === 'en' ? ID.back : EN.back}
           </Link>

@@ -59,7 +59,10 @@ export const ArchivedPage = () => {
           <div className="mb-6 flex items-center justify-between">
             <Link
               to={`/${ROUTES.DASHBOARD}`}
-              className={clsx(buttonVariants(), 'flex w-max items-center')}>
+              className={clsx(
+                buttonVariants(),
+                'flex w-[211px] items-center justify-center',
+              )}>
               <ChevronLeft size={22} /> {language === 'en' ? ID.back : EN.back}
             </Link>
           </div>

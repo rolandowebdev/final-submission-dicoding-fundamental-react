@@ -41,7 +41,11 @@ export const CardNote = ({
           }
           handleAction={() => handleDelete(id)}
         />
-        <Button onClick={() => handleArchive(id)} color="success" size="icon">
+        <Button
+          onClick={() => handleArchive(id)}
+          color="success"
+          size="icon"
+          className="w-20">
           {archiveText}
         </Button>
       </div>
