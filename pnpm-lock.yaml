@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@fontsource-variable/gabarito':
+    specifier: ^5.0.2
+    version: 5.0.2
   clsx:
     specifier: ^2.0.0
     version: 2.0.0
@@ -319,6 +322,10 @@ packages:
     resolution: {integrity: sha512-qQfo2mxH5yVom1kacMtZZJFVdW+E70mqHMJvVg6WTLo+VBuQJ4TojZlfWBjK0ve5BdEeNAVxOsl/nvNMpJOaJA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
+
+  /@fontsource-variable/gabarito@5.0.2:
+    resolution: {integrity: sha512-fRd/I3fuelQU9sVJQJJEqIDBurR1A/gcBmMix90HnAzLhmBtCXUzKWcJEsGdC8NCqvotgXhguH5rQkxDl0JS3w==}
+    dev: false
 
   /@humanwhocodes/config-array@0.11.13:
     resolution: {integrity: sha512-JSBDMiDKSzQVngfRjOdFXgFfklaXI4K9nLF49Auh21lmBWRLIK3+xTErTWD4KU54pb6coM6ESE7Awz/FNU3zgQ==}

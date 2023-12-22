@@ -6,8 +6,7 @@ import { LanguageProvider } from './context/LanguageProvider'
 import { ThemeProvider } from './context/ThemeProvider'
 
 import 'react-toastify/dist/ReactToastify.css'
-import './fonts/gabarito-bold.ttf'
-import './fonts/gabarito-regular.ttf'
+import '@fontsource-variable/gabarito'
 import './styles/index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
