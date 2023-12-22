@@ -5,6 +5,7 @@ import { CreatePage } from '../pages/create'
 import { DashboardPage } from '../pages/dashboard'
 import { DetailPage } from '../pages/detail'
 import { LoginPage } from '../pages/login'
+import { NotFound } from '../pages/notfound'
 import { RegisterPage } from '../pages/register'
 import { getUserLogged } from '../utils/auth'
 
@@ -72,5 +73,9 @@ export const routes = createBrowserRouter([
         ],
       },
     ],
+  },
+  {
+    path: '*',
+    element: <NotFound />,
   },
 ])

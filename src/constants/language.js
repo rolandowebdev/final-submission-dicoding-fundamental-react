@@ -29,6 +29,8 @@ const EN = {
   'pretty-empty': 'Pretty empty around here',
   'archived-empty': 'List of archived notes is empty',
   'active-empty': 'List of active notes is empty',
+  'empty-page-message':
+    'Uppss.. the page you are looking for does not exist, please go back to the dashboard page 🏡🐾',
   eg: 'e.g.',
 }
 
@@ -50,12 +52,6 @@ const ID = {
   title: 'Judul',
   body: 'Isi',
   delete: 'Hapus',
-  'delete-notif': 'Catatan berhasil dihapus',
-  'delete-message': 'Apakah Anda yakin ingin menghapus catatan ini?',
-  'login-to-snap': 'Masuk ke Snap',
-  'dont-have-account': 'Belum punya akun?',
-  register: 'Daftar',
-  'register-notif': 'Pendaftaran berhasil',
   'register-to-snap': 'Daftar ke Snap',
   login: 'Masuk',
   'already-have-account': 'Sudah punya akun?',
@@ -63,6 +59,8 @@ const ID = {
   'pretty-empty': 'Cukup kosong di sekitar sini',
   'archived-empty': 'Daftar catatan yang diarsipkan kosong',
   'active-empty': 'Daftar catatan aktif kosong',
+  'empty-page-message':
+    'Uppss.. halaman yang Anda cari tidak ada, silahkan kembali ke halaman dashboard 🏡🐾',
   eg: 'cth.',
 }
 

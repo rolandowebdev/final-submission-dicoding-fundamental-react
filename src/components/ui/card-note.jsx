@@ -25,9 +25,7 @@ export const CardNote = ({
       <Link to={`/${ROUTES.NOTES}/${id}`} className="hover:underline">
         <Heading size="h2">{title}</Heading>
       </Link>
-      <p className="text-brand-softDark dark:text-brand-light leading-6">
-        {parse(body)}
-      </p>
+      <p className="leading-6">{parse(body)}</p>
       <time
         className="dark:border-brand-border dark:bg-brand-dark bg-brand-light w-max rounded-sm border border-slate-300 px-2 py-1 text-xs"
         dateTime={createdAt}>
