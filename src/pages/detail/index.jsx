@@ -54,9 +54,9 @@ export const DetailPage = () => {
             ) : (
               <>
                 <img
-                  src="/assets/example.webp"
+                  src="/assets/note.webp"
                   alt="Example note"
-                  className="dark:border-brand-border h-64 w-full rounded-md border border-slate-300"
+                  className="dark:border-brand-border h-[300px] w-full rounded-md border border-slate-300"
                 />
                 <Heading className="mt-4">{note?.title}</Heading>
                 <p className="text-brand-softDark my-2 leading-6 dark:text-slate-400">
