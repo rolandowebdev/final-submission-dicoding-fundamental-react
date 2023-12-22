@@ -10,13 +10,13 @@ import { EN, ID } from '../../constants/language'
 import { Button } from './button'
 
 export const CardNote = ({
-  children,
   id,
   title,
   body,
   createdAt,
   handleDelete,
   handleArchive,
+  archiveText,
 }) => {
   const { language } = useLanguage()
 
@@ -42,7 +42,7 @@ export const CardNote = ({
           handleAction={() => handleDelete(id)}
         />
         <Button onClick={() => handleArchive(id)} color="success" size="icon">
-          {language === 'en' ? ID.archive : EN.archive}
+          {archiveText}
         </Button>
       </div>
     </div>
@@ -56,4 +56,5 @@ CardNote.propTypes = {
   createdAt: PropTypes.string.isRequired,
   handleDelete: PropTypes.func.isRequired,
   handleArchive: PropTypes.func.isRequired,
+  archiveText: PropTypes.string.isRequired,
 }

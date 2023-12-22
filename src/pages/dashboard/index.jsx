@@ -80,6 +80,7 @@ export const DashboardPage = () => {
                   {...note}
                   handleDelete={handleDelete}
                   handleArchive={handleArchive}
+                  archiveText={language === 'en' ? ID.archive : EN.archive}
                 />
               ))}
             </CardContainer>

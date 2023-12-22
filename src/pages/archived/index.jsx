@@ -78,6 +78,7 @@ export const ArchivedPage = () => {
                   {...note}
                   handleDelete={handleDelete}
                   handleArchive={handleUnarchive}
+                  archiveText={language === 'en' ? ID.active : EN.active}
                 />
               ))}
             </CardContainer>
