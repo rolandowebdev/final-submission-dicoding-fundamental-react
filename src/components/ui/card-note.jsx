@@ -21,15 +21,15 @@ export const CardNote = ({
   const { language } = useLanguage()
 
   return (
-    <div className="flex min-h-[290px] select-none flex-col gap-3 rounded-md border border-slate-400 bg-slate-300 p-4 duration-300 hover:shadow-sm dark:border-border dark:bg-softDark dark:hover:bg-softDark/70 dark:hover:shadow-softDark">
+    <div className="dark:border-brand-border dark:bg-brand-softDark dark:hover:bg-brand-softDark/70 dark:hover:shadow-brand-softDark bg-brand-softLight flex min-h-[290px] select-none flex-col gap-3 rounded-md border border-slate-300 p-4 duration-300 hover:shadow-sm">
       <Link to={`/${ROUTES.NOTES}/${id}`} className="hover:underline">
         <Heading size="h2">{title}</Heading>
       </Link>
-      <p className="leading-6 text-softDark dark:text-slate-300">
+      <p className="text-brand-softDark dark:text-brand-light leading-6">
         {parse(body)}
       </p>
       <time
-        className="w-max rounded-sm border border-slate-400 bg-light px-2 py-1 text-xs dark:border-border dark:bg-dark"
+        className="dark:border-brand-border dark:bg-brand-dark bg-brand-light w-max rounded-sm border border-slate-300 px-2 py-1 text-xs"
         dateTime={createdAt}>
         {showFormattedDate(createdAt)}
       </time>

@@ -46,7 +46,7 @@ export const LoginPage = () => {
         </Heading>
         <form
           onSubmit={handleLogin}
-          className="flex flex-col gap-4 rounded-md border border-slate-400 bg-slate-300 p-5 dark:border-border dark:bg-softDark">
+          className="dark:border-brand-border dark:bg-brand-softDark bg-brand-softLight flex flex-col gap-4 rounded-md border border-slate-300 p-5">
           <Input
             id="email"
             label={language === 'en' ? ID.email : EN.email}
@@ -74,7 +74,7 @@ export const LoginPage = () => {
             )}
           </Button>
         </form>
-        <div className="mt-4 rounded-md border border-slate-400 p-4 text-center text-sm dark:border-border">
+        <div className="dark:border-brand-border mt-4 rounded-md border border-slate-300 p-4 text-center text-sm">
           <p>
             {language === 'en'
               ? ID['dont-have-account']

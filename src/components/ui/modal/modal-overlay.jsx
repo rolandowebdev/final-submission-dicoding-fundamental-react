@@ -4,7 +4,7 @@ export const ModalOverlay = ({ handleHideModal }) => {
   return (
     <div
       onClick={handleHideModal}
-      className="fixed inset-0 z-10 bg-light/50 backdrop-blur-sm dark:bg-softDark/50"></div>
+      className="dark:bg-brand-softDark/50 bg-brand-light/50 fixed inset-0 z-10 backdrop-blur-sm"></div>
   )
 }
 

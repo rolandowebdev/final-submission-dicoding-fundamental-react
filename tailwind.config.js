@@ -10,11 +10,13 @@ export default {
         sans: ['Gabarito Variable', ...fontFamily.sans],
       },
       colors: {
-        dark: '#0d1117',
-        softDark: '#161b22',
-        light: '#e6edf3',
-        border: '#21262d',
-        success: '#009176',
+        brand: {
+          dark: '#0d1117',
+          softDark: '#161b22',
+          light: '#F6F4EB',
+          softLight: '#ECE8DD',
+          border: '#21262d',
+        },
       },
       keyframes: {
         wiggle: {

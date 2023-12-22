@@ -70,7 +70,7 @@ export const RegisterPage = () => {
         </Heading>
         <form
           onSubmit={handleRegister}
-          className="flex flex-col gap-4 rounded-md border border-slate-400 bg-slate-300 p-5 dark:border-border dark:bg-softDark">
+          className="dark:border-brand-border dark:bg-brand-softDark bg-brand-softLight flex flex-col gap-4 rounded-md border border-slate-300 p-5">
           <Input
             id="name"
             label={language === 'en' ? ID.name : EN.name}
@@ -118,7 +118,7 @@ export const RegisterPage = () => {
             )}
           </Button>
         </form>
-        <div className="mt-4 rounded-md border border-slate-400 p-4 text-center text-sm dark:border-border">
+        <div className="dark:border-brand-border mt-4 rounded-md border border-slate-300 p-4 text-center text-sm">
           <p>
             {language === 'en'
               ? ID['already-have-account']

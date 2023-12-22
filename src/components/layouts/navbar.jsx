@@ -21,7 +21,7 @@ export const Navbar = () => {
   }
 
   return (
-    <header className="flex h-20 w-full max-w-3xl items-center justify-between border-b border-b-gray-300 dark:border-b-softDark">
+    <header className="dark:border-b-brand-softDark flex h-20 w-full max-w-3xl items-center justify-between border-b border-b-slate-300">
       <div className="flex gap-2">
         <Heading className="capitalize">{`${
           language === 'en' ? ID.gretting : EN.gretting

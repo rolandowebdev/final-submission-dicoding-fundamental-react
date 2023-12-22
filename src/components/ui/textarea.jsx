@@ -12,7 +12,7 @@ export const Textarea = ({ className, id, label, ...rest }) => (
       {...rest}
       id={id}
       className={clsx(
-        'resize-none rounded-md bg-slate-100 px-3 py-1 transition duration-300 hover:ring-1 hover:ring-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus-visible:ring-2 dark:bg-dark',
+        'dark:bg-brand-dark resize-none rounded-md bg-white px-3 py-1 transition duration-300 hover:ring-1 hover:ring-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus-visible:ring-2',
         className,
       )}
     />
