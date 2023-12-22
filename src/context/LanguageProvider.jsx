@@ -4,8 +4,8 @@ import { createContext, useEffect, useMemo, useState } from 'react'
 export const LanguageContext = createContext(null)
 
 export const LanguageProvider = ({ children }) => {
-  const [language, setLanguage] = useState(() =>
-    localStorage.getItem('language'),
+  const [language, setLanguage] = useState(
+    () => localStorage.getItem('language') || 'en',
   )
 
   useEffect(() => {

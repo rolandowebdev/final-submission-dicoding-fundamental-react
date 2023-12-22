@@ -7,4 +7,5 @@ export const ROUTES = {
   CREATE: 'create',
   NOTES: 'notes',
   NOTE_ID: ':noteId',
+  NOT_FOUND: '*',
 }

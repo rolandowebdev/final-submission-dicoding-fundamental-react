@@ -16,7 +16,7 @@ const protectedRoutes = () => {
   return null
 }
 
-const loginLoader = () => {
+const authLoader = () => {
   if (localStorage.getItem('accessToken')) {
     return redirect(`/${ROUTES.DASHBOARD}`)
   }
@@ -26,6 +26,7 @@ const loginLoader = () => {
 export const routes = createBrowserRouter([
   {
     path: ROUTES.ROOT,
+    loader: () => authLoader(),
     children: [
       {
         index: true,
@@ -34,7 +35,6 @@ export const routes = createBrowserRouter([
       {
         path: ROUTES.LOGIN,
         element: <LoginPage />,
-        loader: () => loginLoader(),
       },
       {
         path: ROUTES.REGISTER,
@@ -75,7 +75,7 @@ export const routes = createBrowserRouter([
     ],
   },
   {
-    path: '*',
+    path: ROUTES.NOT_FOUND,
     element: <NotFound />,
   },
 ])
