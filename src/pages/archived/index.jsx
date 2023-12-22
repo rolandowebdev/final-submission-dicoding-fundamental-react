@@ -9,11 +9,11 @@ import {
   EmptyNotes,
   buttonVariants,
 } from '../../components/ui'
+import { EN, ID } from '../../constants/language'
 import { ROUTES } from '../../constants/path-name'
+import { useLanguage } from '../../hooks/useLanguage'
 import { deleteNote, getArchivedNotes, unarchiveNote } from '../../utils/notes'
 import { showErrorToaster, showSuccessToaster } from '../../utils/toast'
-import { useLanguage } from '../../hooks/useLanguage'
-import { EN, ID } from '../../constants/language'
 
 export const ArchivedPage = () => {
   const { language } = useLanguage()

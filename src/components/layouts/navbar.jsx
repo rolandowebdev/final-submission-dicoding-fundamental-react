@@ -1,13 +1,12 @@
-import { Languages, Moon } from 'lucide-react'
+import { Moon, Sun } from 'lucide-react'
 import { useNavigate, useRouteLoaderData } from 'react-router-dom'
+import { EN, ID } from '../../constants/language'
 import { ROUTES } from '../../constants/path-name'
+import { useLanguage } from '../../hooks/useLanguage'
+import { useTheme } from '../../hooks/useTheme'
 import { removeAccessToken } from '../../utils/auth'
 import { Button, Heading } from '../ui'
 import { Modal } from './modal'
-import { useTheme } from '../../hooks/useTheme'
-import { useLanguage } from '../../hooks/useLanguage'
-import { Sun } from 'lucide-react'
-import { EN, ID } from '../../constants/language'
 
 export const Navbar = () => {
   const navigate = useNavigate()
@@ -31,7 +30,7 @@ export const Navbar = () => {
         </span>
       </div>
       <nav>
-        <ul className="flex items-center gap-4">
+        <ul className="flex items-center gap-3">
           <li>
             <Button
               onClick={() => setLanguage(language === 'en' ? 'id' : 'en')}

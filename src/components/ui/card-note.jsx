@@ -1,13 +1,13 @@
 import parse from 'html-react-parser'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
+import { EN, ID } from '../../constants/language'
 import { ROUTES } from '../../constants/path-name'
+import { useLanguage } from '../../hooks/useLanguage'
 import { showFormattedDate } from '../../utils/formattedDate'
 import { Modal } from '../layouts'
-import { Heading } from './heading'
-import { useLanguage } from '../../hooks/useLanguage'
-import { EN, ID } from '../../constants/language'
 import { Button } from './button'
+import { Heading } from './heading'
 
 export const CardNote = ({
   id,

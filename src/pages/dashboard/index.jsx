@@ -1,19 +1,18 @@
+import clsx from 'clsx'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { CardContainer, Navbar, RootContainer } from '../../components/layouts'
 import {
-  Button,
   CardNote,
   CardSkeleton,
   EmptyNotes,
   buttonVariants,
 } from '../../components/ui'
-import { archiveNote, deleteNote, getActiveNotes } from '../../utils/notes'
-import { showErrorToaster, showSuccessToaster } from '../../utils/toast'
+import { EN, ID } from '../../constants/language'
 import { ROUTES } from '../../constants/path-name'
 import { useLanguage } from '../../hooks/useLanguage'
-import { EN, ID } from '../../constants/language'
-import clsx from 'clsx'
+import { archiveNote, deleteNote, getActiveNotes } from '../../utils/notes'
+import { showErrorToaster, showSuccessToaster } from '../../utils/toast'
 
 export const DashboardPage = () => {
   const { language } = useLanguage()

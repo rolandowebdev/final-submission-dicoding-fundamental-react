@@ -3,12 +3,12 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { RootContainer } from '../../components/layouts'
 import { Button, Heading, Input } from '../../components/ui'
+import { EN, ID } from '../../constants/language'
 import { ROUTES } from '../../constants/path-name'
 import { useInput } from '../../hooks/useInput'
+import { useLanguage } from '../../hooks/useLanguage'
 import { register } from '../../utils/auth'
 import { showErrorToaster, showSuccessToaster } from '../../utils/toast'
-import { useLanguage } from '../../hooks/useLanguage'
-import { EN, ID } from '../../constants/language'
 
 export const RegisterPage = () => {
   const navigate = useNavigate()

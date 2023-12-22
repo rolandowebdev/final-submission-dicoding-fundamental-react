@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { useState } from 'react'
 
 export const useInput = (initValue) => {
@@ -10,4 +11,8 @@ export const useInput = (initValue) => {
   }
 
   return [value, reset, onValueChangeHandler]
+}
+
+useInput.propTypes = {
+  initValue: PropTypes.any.isRequired,
 }

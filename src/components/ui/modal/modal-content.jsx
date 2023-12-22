@@ -18,5 +18,5 @@ export const ModalContent = ({ className, children }) => {
 
 ModalContent.propTypes = {
   className: PropTypes.string,
-  children: PropTypes.node,
+  children: PropTypes.node.isRequired,
 }

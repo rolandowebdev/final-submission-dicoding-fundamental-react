@@ -1,8 +1,8 @@
 import { Bird } from 'lucide-react'
-import { Heading } from './heading'
 import PropTypes from 'prop-types'
-import { useLanguage } from '../../hooks/useLanguage'
 import { EN, ID } from '../../constants/language'
+import { useLanguage } from '../../hooks/useLanguage'
+import { Heading } from './heading'
 
 export const EmptyNotes = ({ text }) => {
   const { language } = useLanguage()

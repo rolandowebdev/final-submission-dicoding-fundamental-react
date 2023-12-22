@@ -5,12 +5,12 @@ import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { Navbar, RootContainer } from '../../components/layouts'
 import { DetailSkeleton, Heading, buttonVariants } from '../../components/ui'
+import { EN, ID } from '../../constants/language'
 import { ROUTES } from '../../constants/path-name'
+import { useLanguage } from '../../hooks/useLanguage'
 import { showFormattedDate } from '../../utils/formattedDate'
 import { getNote } from '../../utils/notes'
 import { showErrorToaster } from '../../utils/toast'
-import { EN, ID } from '../../constants/language'
-import { useLanguage } from '../../hooks/useLanguage'
 
 export const DetailPage = () => {
   const { noteId } = useParams()

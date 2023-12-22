@@ -1,7 +1,5 @@
-import { useEffect } from 'react'
-import { useMemo } from 'react'
-import { useState } from 'react'
-import { createContext } from 'react'
+import PropTypes from 'prop-types'
+import { createContext, useEffect, useMemo, useState } from 'react'
 
 export const ThemeContext = createContext(null)
 
@@ -33,4 +31,8 @@ export const ThemeProvider = ({ children }) => {
   return (
     <ThemeContext.Provider value={values}>{children}</ThemeContext.Provider>
   )
+}
+
+ThemeProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 }
