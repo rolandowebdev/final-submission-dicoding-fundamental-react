@@ -3,7 +3,12 @@ import parse from 'html-react-parser'
 import { ChevronLeft } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { Footer, Navbar, RootContainer } from '@/components/layouts'
+import {
+  Footer,
+  Navbar,
+  RootContainer,
+  PageContainer,
+} from '@/components/layouts'
 import { DetailSkeleton, Heading, buttonVariants } from '@/components/ui'
 import { EN, ID } from '@/constants/language'
 import { ROUTES } from '@/constants/path-name'
@@ -39,7 +44,7 @@ export const DetailPage = () => {
   return (
     <RootContainer className="items-center">
       <Navbar />
-      <main className="mb-auto mt-8 w-full max-w-3xl">
+      <PageContainer>
         <header>
           <Link
             to={`/${ROUTES.DASHBOARD}`}
@@ -74,7 +79,7 @@ export const DetailPage = () => {
             )}
           </>
         </article>
-      </main>
+      </PageContainer>
       <Footer />
     </RootContainer>
   )

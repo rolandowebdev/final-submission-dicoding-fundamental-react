@@ -7,6 +7,7 @@ import {
   Footer,
   Navbar,
   RootContainer,
+  PageContainer,
 } from '@/components/layouts'
 import {
   CardNote,
@@ -59,7 +60,7 @@ export const ArchivedPage = () => {
   return (
     <RootContainer className="items-center">
       <Navbar />
-      <main className="my-8 mb-auto w-full max-w-3xl">
+      <PageContainer>
         <article>
           <div className="mb-6 flex items-center justify-between">
             <Link
@@ -98,7 +99,7 @@ export const ArchivedPage = () => {
             />
           )}
         </article>
-      </main>
+      </PageContainer>
       <Footer />
     </RootContainer>
   )

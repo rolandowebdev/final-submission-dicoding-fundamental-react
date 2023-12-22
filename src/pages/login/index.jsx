@@ -1,7 +1,7 @@
 import { Loader2 } from 'lucide-react'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { RootContainer } from '@/components/layouts'
+import { RootContainer, AuthContainer } from '@/components/layouts'
 import { Button, Heading, Input } from '@/components/ui'
 import { EN, ID } from '@/constants/language'
 import { ROUTES } from '@/constants/path-name'
@@ -40,7 +40,7 @@ export const LoginPage = () => {
 
   return (
     <RootContainer className="items-center justify-center">
-      <main className="my-auto w-full max-w-xs py-8">
+      <AuthContainer>
         <Heading className="mb-5 text-center">
           {language === 'en' ? ID['login-to-snap'] : EN['login-to-snap']}
         </Heading>
@@ -86,7 +86,7 @@ export const LoginPage = () => {
             </Link>
           </p>
         </div>
-      </main>
+      </AuthContainer>
     </RootContainer>
   )
 }
