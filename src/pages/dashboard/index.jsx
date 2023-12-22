@@ -1,7 +1,12 @@
 import clsx from 'clsx'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { CardContainer, Navbar, RootContainer } from '../../components/layouts'
+import {
+  CardContainer,
+  Footer,
+  Navbar,
+  RootContainer,
+} from '../../components/layouts'
 import {
   CardNote,
   CardSkeleton,
@@ -53,7 +58,7 @@ export const DashboardPage = () => {
   return (
     <RootContainer className="items-center">
       <Navbar />
-      <main className="my-8 w-full max-w-3xl">
+      <main className="my-8 mb-auto w-full max-w-3xl">
         <article>
           <div className="mb-6 flex items-center justify-between">
             <div className="flex gap-2">
@@ -95,6 +100,7 @@ export const DashboardPage = () => {
           )}
         </article>
       </main>
+      <Footer />
     </RootContainer>
   )
 }

@@ -64,7 +64,7 @@ export const RegisterPage = () => {
 
   return (
     <RootContainer className="items-center justify-center">
-      <main className="w-full max-w-xs">
+      <main className="my-auto w-full max-w-xs">
         <Heading className="mb-5 text-center">
           {language === 'en' ? ID['register-to-snap'] : EN['register-to-snap']}
         </Heading>

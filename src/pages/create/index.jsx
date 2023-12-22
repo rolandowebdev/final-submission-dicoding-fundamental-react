@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { ChevronLeft, Loader2 } from 'lucide-react'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { Navbar, RootContainer } from '../../components/layouts'
+import { Footer, Navbar, RootContainer } from '../../components/layouts'
 import {
   Button,
   Heading,
@@ -50,7 +50,7 @@ export const CreatePage = () => {
   return (
     <RootContainer className="items-center">
       <Navbar />
-      <main className="my-8 w-full max-w-3xl">
+      <main className="my-8 mb-auto w-full max-w-3xl">
         <div className="relative">
           <Link
             to={`/${ROUTES.DASHBOARD}`}
@@ -98,6 +98,7 @@ export const CreatePage = () => {
           </Button>
         </form>
       </main>
+      <Footer />
     </RootContainer>
   )
 }

@@ -2,7 +2,12 @@ import clsx from 'clsx'
 import { ChevronLeft } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { CardContainer, Navbar, RootContainer } from '../../components/layouts'
+import {
+  CardContainer,
+  Footer,
+  Navbar,
+  RootContainer,
+} from '../../components/layouts'
 import {
   CardNote,
   CardSkeleton,
@@ -54,7 +59,7 @@ export const ArchivedPage = () => {
   return (
     <RootContainer className="items-center">
       <Navbar />
-      <main className="my-8 w-full max-w-3xl">
+      <main className="my-8 mb-auto w-full max-w-3xl">
         <article>
           <div className="mb-6 flex items-center justify-between">
             <Link
@@ -94,6 +99,7 @@ export const ArchivedPage = () => {
           )}
         </article>
       </main>
+      <Footer />
     </RootContainer>
   )
 }
