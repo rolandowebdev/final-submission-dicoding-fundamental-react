@@ -25,7 +25,7 @@ export const CardNote = ({
       <Link to={`/${ROUTES.NOTES}/${id}`} className="hover:underline">
         <Heading size="h2">{title}</Heading>
       </Link>
-      <p className="leading-6 text-brand-softDark dark:text-slate-400">
+      <p className="whitespace-pre-line leading-6 text-brand-softDark dark:text-slate-400">
         {parse(body)}
       </p>
       <time
