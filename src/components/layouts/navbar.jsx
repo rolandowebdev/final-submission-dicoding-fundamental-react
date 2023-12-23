@@ -7,6 +7,7 @@ import { Moon, Sun } from 'lucide-react'
 import { useNavigate, useRouteLoaderData } from 'react-router-dom'
 import { Button, Heading } from '../ui'
 import { Modal } from './modal'
+import { Languages } from 'lucide-react'
 
 export const Navbar = () => {
   const navigate = useNavigate()
@@ -36,7 +37,7 @@ export const Navbar = () => {
               onClick={() => setLanguage(language === 'en' ? 'id' : 'en')}
               className="w-11"
               size="icon">
-              {language === 'en' ? 'EN' : 'ID'}
+              <Languages />
             </Button>
           </li>
           <li>

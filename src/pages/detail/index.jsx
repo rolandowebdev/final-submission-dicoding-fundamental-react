@@ -1,21 +1,21 @@
+import {
+  Footer,
+  Navbar,
+  PageContainer,
+  RootContainer,
+} from '@/components/layouts'
+import { DetailSkeleton, Heading, buttonVariants } from '@/components/ui'
+import { EN, ID } from '@/constants/language'
+import { ROUTES } from '@/constants/path-name'
+import { useFormattedDate } from '@/hooks/useFormattedDate'
+import { useLanguage } from '@/hooks/useLanguage'
+import { getNote } from '@/utils/notes'
+import { showErrorToaster } from '@/utils/toast'
 import clsx from 'clsx'
 import parse from 'html-react-parser'
 import { ChevronLeft } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import {
-  Footer,
-  Navbar,
-  RootContainer,
-  PageContainer,
-} from '@/components/layouts'
-import { DetailSkeleton, Heading, buttonVariants } from '@/components/ui'
-import { EN, ID } from '@/constants/language'
-import { ROUTES } from '@/constants/path-name'
-import { useLanguage } from '@/hooks/useLanguage'
-import { showFormattedDate } from '@/utils/formattedDate'
-import { getNote } from '@/utils/notes'
-import { showErrorToaster } from '@/utils/toast'
 
 export const DetailPage = () => {
   const { noteId } = useParams()
@@ -23,6 +23,8 @@ export const DetailPage = () => {
 
   const [note, setNote] = useState({})
   const [loading, setLoading] = useState(true)
+
+  const formattedDate = useFormattedDate(note?.createdAt)
 
   const getNoteById = async () => {
     const { error, data } = await getNote(noteId)
@@ -73,7 +75,7 @@ export const DetailPage = () => {
                 <time
                   className="w-max rounded-sm border border-slate-400 bg-brand-softLight px-2 py-1 text-xs dark:border-brand-border dark:bg-brand-softDark"
                   dateTime={note?.createdAt}>
-                  {showFormattedDate(note?.createdAt)}
+                  {formattedDate}
                 </time>
               </>
             )}
