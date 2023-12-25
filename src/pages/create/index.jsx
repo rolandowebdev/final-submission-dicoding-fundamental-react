@@ -79,7 +79,11 @@ export const CreatePage = () => {
             type="text"
             value={title}
             onChange={onTitleChange}
-            placeholder={`${language === 'en' ? ID.eg : EN.eg} Learn React`}
+            placeholder={
+              language === 'en'
+                ? ID['title-placeholder']
+                : EN['title-placeholder']
+            }
           />
           <Textarea
             required
@@ -87,9 +91,11 @@ export const CreatePage = () => {
             label={language === 'en' ? ID.body : EN.body}
             value={body}
             onChange={onBodyChange}
-            placeholder={`${
-              language === 'en' ? ID.eg : EN.eg
-            } I'm learning React from scratch to master it later.`}
+            placeholder={
+              language === 'en'
+                ? ID['body-placeholder']
+                : EN['body-placeholder']
+            }
           />
           <Button
             type="submit"

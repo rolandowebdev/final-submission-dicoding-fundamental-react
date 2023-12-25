@@ -77,7 +77,7 @@ export const RegisterPage = () => {
             type="text"
             value={name}
             onChange={onNameChange}
-            placeholder="e.g. Anya Forger"
+            placeholder={`${language === 'en' ? ID.eg : EN.eg} anya forger`}
           />
           <Input
             id="email"
@@ -85,7 +85,7 @@ export const RegisterPage = () => {
             type="email"
             value={email}
             onChange={onEmailChange}
-            placeholder="e.g. anya@gmail.com"
+            placeholder={`${language === 'en' ? ID.eg : EN.eg} anya@gmail.com`}
           />
           <Input
             id="password"
@@ -93,7 +93,11 @@ export const RegisterPage = () => {
             type="password"
             value={password}
             onChange={onPasswordChange}
-            placeholder="min. 6 characters"
+            placeholder={
+              language === 'en'
+                ? ID['password-placeholder']
+                : EN['password-placeholder']
+            }
           />
           <Input
             id="confirmPassword"
@@ -105,7 +109,11 @@ export const RegisterPage = () => {
             type="password"
             value={confirmPassword}
             onChange={onConfirmPasswordChange}
-            placeholder="min. 6 characters"
+            placeholder={
+              language === 'en'
+                ? ID['password-placeholder']
+                : EN['password-placeholder']
+            }
           />
           <Button
             type="submit"

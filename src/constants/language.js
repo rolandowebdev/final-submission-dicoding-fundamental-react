@@ -2,6 +2,7 @@ const EN = {
   email: 'Email',
   password: 'Password',
   'password-mismatch': 'Passwords do not match',
+  'password-placeholder': 'min. 8 characters',
   name: 'Name',
   'confirm-password': 'Confirm Password',
   gretting: 'Hello',
@@ -31,6 +32,8 @@ const EN = {
   'active-empty': 'List of active notes is empty',
   'empty-page-message':
     'Uppss.. the page you are looking for does not exist, please go back to the dashboard page 🏡🐾',
+  'title-placeholder': 'e.g. Learn React',
+  'body-placeholder': "e.g. I'm learning React from beginner to expert.",
   eg: 'e.g.',
 }
 
@@ -38,6 +41,7 @@ const ID = {
   email: 'Surel',
   password: 'Kata Sandi',
   'password-mismatch': 'Kata sandi tidak cocok',
+  'password-placeholder': 'min. 6 karakter',
   name: 'Nama',
   'confirm-password': 'Konfirmasi Kata Sandi',
   gretting: 'Halo',
@@ -67,6 +71,8 @@ const ID = {
   'active-empty': 'Daftar catatan aktif kosong',
   'empty-page-message':
     'Uppss.. halaman yang Anda cari tidak ada, silahkan kembali ke halaman dashboard 🏡🐾',
+  'title-placeholder': 'cth. Belajar React',
+  'body-placeholder': 'cth. Saya belajar React dari pemula sampai mahir',
   eg: 'cth.',
 }
 
