@@ -25,23 +25,27 @@ export const ArchivedPage = () => {
   const { language } = useLanguage()
 
   const [archivedNotes, setArchivedNotes] = useState([])
-  const [loading, setLoading] = useState(true)
+  const [loadingNotes, setLoadingNotes] = useState(true)
+  const [loadingActive, setLoadingActive] = useState(false)
+  const [loadingDelete, setLoadingDelete] = useState(false)
 
   const getNotes = async () => {
     const { error, data } = await getArchivedNotes()
 
     if (error) {
       showErrorToaster({ message: data })
-      setLoading(false)
+      setLoadingNotes(false)
       return
     }
 
     setArchivedNotes(data)
-    setLoading(false)
+    setLoadingNotes(false)
   }
 
   const handleDelete = async (id) => {
+    setLoadingDelete(true)
     await deleteNote(id)
+    setLoadingDelete(false)
     getNotes()
     showSuccessToaster({
       message: `${language === 'en' ? ID['delete-notif'] : EN['delete-notif']}`,
@@ -49,7 +53,9 @@ export const ArchivedPage = () => {
   }
 
   const handleUnarchive = async (id) => {
+    setLoadingActive(true)
     await unarchiveNote(id)
+    setLoadingActive(false)
     getNotes()
   }
 
@@ -73,7 +79,7 @@ export const ArchivedPage = () => {
             </Link>
           </div>
 
-          {loading ? (
+          {loadingNotes ? (
             <CardContainer>
               {[...Array(3)].map((_, index) => (
                 <CardSkeleton key={index} />
@@ -87,6 +93,8 @@ export const ArchivedPage = () => {
                   {...note}
                   handleDelete={handleDelete}
                   handleArchive={handleUnarchive}
+                  loadingArchive={loadingActive}
+                  loadingDelete={loadingDelete}
                   archiveText={language === 'en' ? ID.active : EN.active}
                 />
               ))}

@@ -64,8 +64,9 @@ export const LoginPage = () => {
             placeholder="********"
           />
           <Button
-            color="success"
             type="submit"
+            color="success"
+            disabled={loading}
             className="flex h-10 w-full items-center justify-center">
             {loading ? (
               <Loader2 className="h-5 w-5 animate-spin" />

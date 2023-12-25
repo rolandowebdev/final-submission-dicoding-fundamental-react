@@ -24,23 +24,27 @@ export const DashboardPage = () => {
   const { language } = useLanguage()
 
   const [activeNotes, setActiveNotes] = useState([])
-  const [loading, setLoading] = useState(true)
+  const [loadingNotes, setLoadingNotes] = useState(true)
+  const [loadingArchive, setLoadingArchive] = useState(false)
+  const [loadingDelete, setLoadingDelete] = useState(false)
 
   const getNotes = async () => {
     const { error, data } = await getActiveNotes()
 
     if (error) {
       showErrorToaster({ message: data })
-      setLoading(false)
+      setLoadingNotes(false)
       return
     }
 
     setActiveNotes(data)
-    setLoading(false)
+    setLoadingNotes(false)
   }
 
   const handleDelete = async (id) => {
+    setLoadingDelete(true)
     await deleteNote(id)
+    setLoadingDelete(false)
     getNotes()
     showSuccessToaster({
       message: `${language === 'en' ? ID['delete-notif'] : EN['delete-notif']}`,
@@ -48,7 +52,9 @@ export const DashboardPage = () => {
   }
 
   const handleArchive = async (id) => {
+    setLoadingArchive(true)
     await archiveNote(id)
+    setLoadingArchive(false)
     getNotes()
   }
 
@@ -76,7 +82,7 @@ export const DashboardPage = () => {
             </div>
           </div>
 
-          {loading ? (
+          {loadingNotes ? (
             <CardContainer>
               {[...Array(3)].map((_, index) => (
                 <CardSkeleton key={index} />
@@ -90,6 +96,8 @@ export const DashboardPage = () => {
                   {...note}
                   handleDelete={handleDelete}
                   handleArchive={handleArchive}
+                  loadingDelete={loadingDelete}
+                  loadingArchive={loadingArchive}
                   archiveText={language === 'en' ? ID.archive : EN.archive}
                 />
               ))}
